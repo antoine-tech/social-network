@@ -13,6 +13,12 @@ import languageContext from "./Context/context";
 import en from "./assets/translations/en";
 import fr from "./assets/translations/fr";
 
+// STYLES
+import '@fortawesome/fontawesome-free/css/all.min.css'; 
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import "mdbootstrap/css/bootstrap.min.css";
+import "./assets/styles/main.scss";
+
 
 const translations = {
     fr: fr,

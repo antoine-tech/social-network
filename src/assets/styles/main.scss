@@ -1,0 +1,121 @@
+.full-screen {
+    min-height: 100vh;
+}
+
+
+$primary-color:#FC9764;
+$secondary-color:#2B59C3;
+$danger-color:#F7508D;
+$success-color:#32936F;
+$white:#fff;
+
+.bg-gradient-primary {
+    background: $primary-color;
+    background: linear-gradient(90deg, $primary-color 0%, $primary-color 100%);
+}
+
+.bg-primary-color {
+    background-color: $primary-color;
+}
+
+.bg-secondary-color{
+    background-color: $secondary-color;
+}
+
+
+.bg-success-color{
+    background-color: $success-color;
+}
+
+.bg-danger-color {
+    background-color: $danger-color;
+}
+
+
+
+.btn-primary-color{
+    background-color: $primary-color;
+}
+
+.btn-danger-color{
+    background-color: $danger-color;
+}
+
+.btn-secondary-color{
+    background-color: $secondary-color;
+}
+.btn-success-color{
+    background-color: $success-color;
+}
+
+nav li a {
+    color:$white
+}
+
+.absolute-top{
+    position: absolute;
+    top:0;
+}
+
+nav{
+    width:100%;
+}
+
+nav a{
+    font-size: 1.5rem;
+}
+
+.menu-left{
+    position: fixed;
+    height: 100vh;
+    background-color: $secondary-color;
+    transition: 1s ease-in-out;
+    z-index:100;
+}
+
+.menu-left ul{
+    height: 100%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style-type: none;
+    li a{
+        font-size: 2rem;
+        color:$white;
+    }
+}
+
+.menu-left #close{
+    position: absolute;
+    right:1rem;
+    top:1rem;
+    color:$white;
+    cursor: pointer;
+}
+
+
+@media screen and (min-width:992px)
+{
+    .menu-left {
+        width:33vw;
+        right:-33vw;
+    }
+
+}
+
+@media screen and (max-width:992px)
+{
+    .menu-left  {
+        width:100vw;
+        right:-100vw
+    }
+
+}
+
+
+.menu-left.show{
+    right: 0;
+}
+

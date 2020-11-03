@@ -1,24 +1,23 @@
 const initialState = {
-    posts : [],
-    current_user:{}
+    posts: [],
+    current_user: {}
 }
 
-const reducer = (state=initialState, action) =>
-{
-    const newState = {...state};
+const reducer = (state = initialState, action) => {
+    const newState = { ...state };
 
     switch (action.type) {
-        case "CREATE_POST":
-            
-            break;
-        case "UPDATE_POST":
-            
-            break;
-        
-        case "SIGN_IN_USER":
+        case "SET_CURRENT_USER":
 
-            break;
-    
+
+            console.log(action.payload)
+
+            if (action.payload) {
+                return newState.current_user = action.payload;
+            } else {
+                break;
+            }
+
         default:
             return state;
     }

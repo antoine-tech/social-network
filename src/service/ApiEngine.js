@@ -1,10 +1,12 @@
 import API_BASE_URL from "../config/API/ApiBaseUrl";
 
+import Cookies from 'js-cookie'
+
 class ApiEngine {
 
-    constructor(base_url = API_BASE_URL, enpoint) {
+    constructor(base_url = API_BASE_URL, endpoint) {
         this.base_url = base_url;
-        this.enpoint = enpoint;
+        this.endpoint = endpoint;
     }
     // request method for all requests
     async request(method, body = null, authenticated = false, jwt_token = null, headers = { "Content-Type": "application/json" }, authHeaders = { 'Authorization': `Bearer ${jwt_token}` }) {
@@ -35,29 +37,50 @@ class ApiEngine {
 
 
     async create(datas, endpoint, authenticated = false, jwt_token = null) {
-        this.enpoint = this.base_url + endpoint;
+        this.endpoint = this.base_url + endpoint;
         let response = await this.request("POST", datas, authenticated, jwt_token)
         return response;
     }
 
     async update(datas, endpoint, authenticated = true, jwt_token = null) {
-        this.enpoint = this.base_url + endpoint;
+        this.endpoint = this.base_url + endpoint;
         let response = await this.request("PUT", datas, authenticated, jwt_token)
         return response;
     }
 
     async delete(endpoint, authenticated = true, jwt_token = null) {
-        this.enpoint = this.base_url + endpoint;
+        this.endpoint = this.base_url + endpoint;
         let response = await this.request("DELETE", null, authenticated, jwt_token)
         return response;
     }
 
     async find(endpoint, authenticated = true, jwt_token = null) {
-        this.enpoint = this.base_url + endpoint;
+        this.endpoint = this.base_url + endpoint;
         let response = await this.request("GET", null, authenticated, jwt_token)
         return response;
     }
 
+
+    // userdatas as object {username, email, password}
+
+    async signUp(datas, endpoint = "/auth/local/register") {
+
+        let response = await this.create(datas, endpoint);
+
+        return response
+
+    }
+
+    // userdatas as object {identifier:email or login, password}
+    async signIn(datas, endpoint = "/auth/local") {
+
+        let response = await this.create(datas, endpoint);
+
+        if (response.hasOwnProperty("jwt")) { Cookies.set("current_user_jwt", response.jwt) }
+
+        return response
+
+    }
 
 
 }
