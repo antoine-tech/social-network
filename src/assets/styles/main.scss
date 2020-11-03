@@ -55,6 +55,7 @@ nav li a {
 .absolute-top{
     position: absolute;
     top:0;
+    z-index: 1000;
 }
 
 nav{
@@ -70,7 +71,7 @@ nav a{
     height: 100vh;
     background-color: $secondary-color;
     transition: 1s ease-in-out;
-    z-index:100;
+    z-index:1500;
 }
 
 .menu-left ul{
@@ -117,5 +118,15 @@ nav a{
 
 .menu-left.show{
     right: 0;
+}
+
+.form-sign-actions{
+    padding: 2.5rem;
+    background-color: #FFF;
+    color: #000;
+    min-height: 66vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 

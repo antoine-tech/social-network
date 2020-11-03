@@ -1,6 +1,8 @@
 const initialState = {
     posts: [],
-    current_user: {}
+    current_user: {},
+    jwt: "",
+    loading: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -13,10 +15,23 @@ const reducer = (state = initialState, action) => {
             console.log(action.payload)
 
             if (action.payload) {
-                return newState.current_user = action.payload;
-            } else {
-                break;
+                newState.current_user = action.payload.user
+                newState.jwt = action.payload.jwt
             }
+
+            return newState;
+
+        case "PAGE_IS_LOADING":
+
+            console.log(action.payload);
+
+            if (action.payload) {
+
+                newState.loading = action.payload.loading;
+
+            }
+
+            return newState
 
         default:
             return state;

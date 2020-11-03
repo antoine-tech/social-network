@@ -35,25 +35,25 @@ class ApiEngine {
 
     }
 
-
+    // WRAPPER POST CREATE METHOD
     async create(datas, endpoint, authenticated = false, jwt_token = null) {
         this.endpoint = this.base_url + endpoint;
         let response = await this.request("POST", datas, authenticated, jwt_token)
         return response;
     }
-
+    // WRAPPER PUT UPDATE METHOD
     async update(datas, endpoint, authenticated = true, jwt_token = null) {
         this.endpoint = this.base_url + endpoint;
         let response = await this.request("PUT", datas, authenticated, jwt_token)
         return response;
     }
-
+    // WRAPPER DELETE CREATE METHOD
     async delete(endpoint, authenticated = true, jwt_token = null) {
         this.endpoint = this.base_url + endpoint;
         let response = await this.request("DELETE", null, authenticated, jwt_token)
         return response;
     }
-
+    // WRAPPER FIND METHOD
     async find(endpoint, authenticated = true, jwt_token = null) {
         this.endpoint = this.base_url + endpoint;
         let response = await this.request("GET", null, authenticated, jwt_token)

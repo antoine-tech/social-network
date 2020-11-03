@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 import * as currentUser from "../../helpers/currentUser";
 
-// HOC allowing us to decide wheter or not rendering view
-
+// ACCESSING CURRENT STATE OF REDUX STORE
 const mapStateToProps = (state) => {
     return {
         current_user: state.current_user
     }
 }
 
+// COMPONENT HELPING KEEPING CODE DRY BY OVERLOADING PROPS IN IT AND MAKING TERNARY CONDITION ONDISPLAY OR REDIRECT ACTION
 const PrivateRoute = ({ component: Component, redirectPathObj, current_user, ...props }) => {
 
 

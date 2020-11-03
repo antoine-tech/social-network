@@ -7,7 +7,7 @@ import * as currentUser from "../../helpers/currentUser";
 
 
 
-
+// ACCESSING CURRENT STATE OF REDUX STORE USING CONNECT HOC
 const mapStateToProps = (state) => {
     return {
         current_user: state.current_user
@@ -59,7 +59,7 @@ const Navigation = ({ current_user }) => {
                         <NavLink exact to="/" active className="active">Accueil</NavLink>
                     </li>
 
-                    {
+                    {   // CHECKING WETHER USER IS LOGGED IN TO DISPLAY LINK ACCORDINGLY
                         currentUser.isUserLoggedIn(current_user) ?
 
                             (
