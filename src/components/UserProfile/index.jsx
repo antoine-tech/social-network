@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ApiEngine from "../../service/ApiEngine";
 import Cookies from 'js-cookie'
 import CardPost from "../CardPost";
+import * as helperDates from "../../helpers/parseDate"
 
 
 const UserProfile = (props) => {
@@ -26,6 +27,7 @@ const UserProfile = (props) => {
 
             let userPostsDatasResponse = await API_ENGINE.find(`/posts?user.id=${userId}`, true, jwt_token);
 
+
             setUserDatas(userDatasResponse);
 
             setUserPostsDatas(userPostsDatasResponse);
@@ -38,7 +40,7 @@ const UserProfile = (props) => {
 
     return (
 
-        <div className="row col-12">
+        <div className="row col-12 bg-primary-color">
 
 
 
@@ -48,9 +50,9 @@ const UserProfile = (props) => {
 
                 <div className="row col-12 px-4 d-flex align-items-center justify-content-center">
 
+                    <h1 className="my-4 text-white text-center">{userDatas?.username} - <small className="font-italic text-white">{userPostsDatas.length} Posts</small></h1>
 
-                    <h1 className="my-4">{userDatas?.username}</h1>
-
+                    <h5 className="font-italic text-white">Membre depuis le {helperDates.parseDate(userDatas.created_at)}</h5>
 
                 </div>
 
