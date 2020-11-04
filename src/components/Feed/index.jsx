@@ -47,7 +47,7 @@ const Feed = ({ posts, loadPosts, loadMorePosts }) => {
 
     return (
         
-        <div className="col-12 col-lg-6 p-0" id="feed-container">
+        <div className="col-12 col-lg-6" id="feed-container">
 
 
             <div className="overflow-auto">
