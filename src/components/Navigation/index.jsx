@@ -68,7 +68,7 @@ const Navigation = ({ current_user }) => {
 
 
                                     <li>
-                                        <NavLink onClick={(event)=>handleToogleMenu(event)} exact to="/" active className="active">Mon mur</NavLink>
+                                        <NavLink onClick={(event)=>handleToogleMenu(event)} exact to="/wall" active className="active">Mon mur</NavLink>
                                     </li>
 
                                 </>

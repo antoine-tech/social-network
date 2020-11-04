@@ -11,7 +11,6 @@ const initialState = {
             }
         ]
     }
-
 }
 
 const reducer = (state = initialState, action) => {
@@ -52,6 +51,7 @@ const reducer = (state = initialState, action) => {
         case "SET_ALERT_MESSAGE":
 
             // DEBUG
+            //console.log(newState)
 
             if (action.payload) {
 
@@ -59,9 +59,26 @@ const reducer = (state = initialState, action) => {
 
             }
 
-            console.log(newState)
             return newState
 
+        case "LOAD_POSTS":
+
+            //console.log(action.payload);
+
+            if (action.payload) {
+                newState.posts = action.payload;
+            }
+
+            return newState
+
+        case "LOAD_MORE_POSTS":
+
+        console.log(action.payload)
+            if (action.payload) {
+                newState.posts = [...newState.posts,...action.payload]
+            }
+
+            return newState;
 
         default:
             return state;

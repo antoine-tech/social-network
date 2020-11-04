@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 
 // COMPONENTS
@@ -22,11 +22,21 @@ import SignActions from "../views/SignActions";
 
 import signInIllustration from "../../assets/img/sign_in_illustration.jpg";
 import signUpIllustration from "../../assets/img/sign_up_illustration.jpg";
+import { isUserLoggedIn } from "../../helpers/currentUser";
+import { connect } from "react-redux";
 
 
-const App = () => {
+const mapStateToProps = (state) => {
+    return {
+        current_user: state.current_user
+    }
+}
+
+
+const App = ({ current_user }) => {
 
     return (
+
         <Router>
 
 
@@ -38,14 +48,24 @@ const App = () => {
 
 
                 <Route path={"/sign-in"}>
-                    <SignActions component={SignInForm} imageSrc={signUpIllustration} />
+
+                    {
+                        isUserLoggedIn(current_user) ? <Redirect to={"/wall"} /> : <SignActions component={SignInForm} imageSrc={signUpIllustration} />
+
+                    }
+
+
                 </Route>
 
 
 
                 <Route path={"/sign-up"}>
 
-                    <SignActions component={SignUpForm} imageSrc={signInIllustration} />
+                    {
+                        isUserLoggedIn(current_user) ? <Redirect to={"/sign-in"} /> :   <SignActions component={SignUpForm} imageSrc={signInIllustration} />
+
+                    }
+
                 </Route>
 
 
@@ -64,4 +84,4 @@ const App = () => {
     )
 }
 
-export default App
+export default connect(mapStateToProps)(App)
