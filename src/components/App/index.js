@@ -13,27 +13,40 @@ import PrivateRoute from "../PrivateRoute";
 import Account from "../views/Account";
 // VIEWS
 import Home from "../views/Home";
-import SignIn from "../views/SignIn";
-import SignUp from "../views/SignUp";
 import Wall from "../Wall";
 
+import SignInForm from "../SignInForm/"
+import SignUpForm from "../SignUpForm/"
+
+import SignActions from "../views/SignActions";
+
+import signInIllustration from "../../assets/img/sign_in_illustration.jpg";
+import signUpIllustration from "../../assets/img/sign_up_illustration.jpg";
+
+
 const App = () => {
+
     return (
         <Router>
 
 
-            <Navigation/>
+            <Navigation />
 
             <Switch>
 
-                <Route exact path={"/"} component={Home}/>
+                <Route exact path={"/"} component={Home} />
 
 
-                <Route path={"/sign-in"} component={SignIn} />
+                <Route path={"/sign-in"}>
+                    <SignActions component={SignInForm} imageSrc={signUpIllustration} />
+                </Route>
 
 
 
-                <Route path={"/sign-up"} component={SignUp} />
+                <Route path={"/sign-up"}>
+
+                    <SignActions component={SignUpForm} imageSrc={signInIllustration} />
+                </Route>
 
 
 

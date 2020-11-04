@@ -22,9 +22,10 @@ const Navigation = ({ current_user }) => {
 
 
     const handleToogleMenu = (event) => {
+
         setIsMenuToogled(!isMenuToogled);
 
-        const menu = document.querySelector(event.target.dataset.target)
+        const menu = document.querySelector("#navigation-menu");
 
         isMenuToogled ? menu.classList.add('show') : menu.classList.remove('show');
 
@@ -37,7 +38,7 @@ const Navigation = ({ current_user }) => {
             <nav className="navbar bg-primary-color absolute-top navbar-dark">
 
 
-                <NavLink exact to="/" active className="active text-white font-weight-bold">My Social Network</NavLink>
+                <NavLink exact to="/" onClick={(event)=>handleToogleMenu(event)} active className="active text-white font-weight-bold">My Social Network</NavLink>
 
 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-menu"
@@ -56,7 +57,7 @@ const Navigation = ({ current_user }) => {
                 <ul>
 
                     <li>
-                        <NavLink exact to="/" active className="active">Accueil</NavLink>
+                        <NavLink onClick={(event)=>handleToogleMenu(event)} exact to="/" active className="active">Accueil</NavLink>
                     </li>
 
                     {   // CHECKING WETHER USER IS LOGGED IN TO DISPLAY LINK ACCORDINGLY
@@ -67,7 +68,7 @@ const Navigation = ({ current_user }) => {
 
 
                                     <li>
-                                        <NavLink exact to="/" active className="active">Mon mur</NavLink>
+                                        <NavLink onClick={(event)=>handleToogleMenu(event)} exact to="/" active className="active">Mon mur</NavLink>
                                     </li>
 
                                 </>
@@ -77,12 +78,12 @@ const Navigation = ({ current_user }) => {
                                 <>
 
                                     <li>
-                                        <NavLink exact to="/sign-up" active className="waves-effect waves-light btn-large btn-success-color  my-2">Inscription</NavLink>
+                                        <NavLink onClick={(event)=>handleToogleMenu(event)} exact to="/sign-up" active className="waves-effect waves-light btn-large btn-success-color  my-2">Inscription</NavLink>
 
                                     </li>
 
                                     <li>
-                                        <NavLink exact to="/sign-in" active className="waves-effect waves-light btn-large btn-success-color my-2">Connexion</NavLink>
+                                        <NavLink onClick={(event)=>handleToogleMenu(event)} exact to="/sign-in" active className="waves-effect waves-light btn-large btn-success-color my-2">Connexion</NavLink>
                                     </li>
 
                                 </>
