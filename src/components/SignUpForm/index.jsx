@@ -2,8 +2,24 @@ import React from "react";
 import ApiEngine from "../../service/ApiEngine";
 import Alert from "../Alert";
 
-const SignUpForm = ({messages:alertMessages}) => {
+import * as actionDispatch from "../../store/actions"
+import { connect } from "react-redux";
 
+
+// REDUX STORE HANDLERS 
+
+
+// DIPATCHING ACTION AMENDING STORE STATE
+// handler allowing dispatch of actions and new datas to general state of redux store
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // on submission function signUser will be executed dispatching an action
+        signUpUser: (userDatas) => dispatch(actionDispatch.asncRegisterUser(userDatas)),
+    }
+}
+// COMPONENT
+
+const SignUpForm = ({messages:alertMessages, signUpUser}) => {
 
     // handle submission of sign up form
     const handleSubmit = async (event) => {
@@ -21,34 +37,8 @@ const SignUpForm = ({messages:alertMessages}) => {
             password: password
         }
 
-        // instanting API Wrapper
-        const API_ENGINE = new ApiEngine();
-
-        // executing request to enpoint with POST metho
-
-        let response = await API_ENGINE.signUp(userDatas);
-
-        // DEBUG
-        console.log(response)
-
-
-        if (response.hasOwnProperty("jwt") && response.hasOwnProperty("user")) {
-            // redirect to sigIn page + Alert subscription ok // to store
-            // setAlertMessages({
-            //     messages: [{ message: "Compte crée avec succès" }],
-            //     type: "success"
-            // });
-        } else {
-
-            // alert subscription error displaying messages from api // TO store
-            // setAlertMessages({
-            //     messages: response.data[0].messages,
-            //     type: "danger"
-            // })
-
-        }
-
-
+        signUpUser(userDatas)
+    
         // analyze response and redirect to signIn or display errors;
     }
 
@@ -104,11 +94,9 @@ const SignUpForm = ({messages:alertMessages}) => {
 
 
 
-
-                {
-
-                    alertMessages ? <Alert messages={alertMessages.messages} type={alertMessages.type} /> : null
-                }
+             
+                    <Alert  /> 
+           
 
 
             </form>
@@ -120,4 +108,4 @@ const SignUpForm = ({messages:alertMessages}) => {
 }
 
 
-export default SignUpForm;
+export default connect(null, mapDispatchToProps)(SignUpForm);

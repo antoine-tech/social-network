@@ -1,28 +1,51 @@
 import React from "react"
-import { connect } from "react-redux";
-import * as actionDispatch from "../../store/actions";
+import { connect } from "react-redux"
+import * as actionDispatch from "../../store/actions"
 
 
-const mapDispatchToProps = (dispatch) => {
+// RETRIEVING STATE
+const mapStateToProps = (state) => {
     return {
-        setAlertMessages: (messages) => dispatch(actionDispatch.setAlertMessage(messages))
+        messages: state.messages
     }
 }
 
-const Alert = ({ type, messages, setAlertMessages }) => {
+const mapDispatchProps = (dispatch) => {
+    return {
+        removeAlert: () => dispatch(actionDispatch.setAlertMessage(
+            {
+                type: "",
+                messages: [
+                ]
+            }
+        ))
+    }
+}
+
+
+const Alert = ({ messages, removeAlert }) => {
+
 
 
     return (
-        <div className={`alert alert-${type} alert-dismissible fade show my-4`} role="alert">
-            {
-                messages.map((e) => <p className="text-center">{e.message}</p>)
-            }
-            <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={(event) => setAlertMessages([])}>
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+
+
+        messages.messages.length > 0 ? (
+
+
+            <div className={`alert alert-${messages.type} alert-dismissible fade show my-4`} role="alert">
+                {
+                    messages.messages.map((e) => <p className="text-center">{e.message}</p>)
+                }
+                <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={() => removeAlert()}>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+        ) : null
+
     )
 }
 
 
-export default connect(null, mapDispatchToProps)(Alert);
+export default connect(mapStateToProps, mapDispatchProps)(Alert);

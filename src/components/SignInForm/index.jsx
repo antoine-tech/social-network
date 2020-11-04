@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { connect } from "react-redux";
 import * as actionDispatch from "../../store/actions";
 import Alert from "../Alert";
@@ -7,24 +7,23 @@ import Alert from "../Alert";
 // handler allowing dispatch of actions and new datas to general state of redux store
 const mapDispatchToProps = (dispatch) => {
     return {
-
         // on submission function signUser will be executed dispatching an action
-        signUser: (userDatas) => dispatch(actionDispatch.asncSetCurrentUser(userDatas))
+        signUser: (userDatas) => dispatch(actionDispatch.asncSetCurrentUser(userDatas)),
     }
 }
 
 // handler allowing access to general state of redux store
 const mapStateToProps = (state) => {
     return {
-        current_user: state.current_user
+        current_user: state.current_user,
+        messages: state.messages
     };
 }
 
 
 
-const SignInForm = ({ signUser, current_user }) => {
+const SignInForm = ({ signUser, current_user, messages: alertMessages }) => {
 
-    const [alertMessages, setAlertMessages] = useState({ messages: [], type: "" });
 
     const handleSubmit = (event) => {
 
@@ -84,13 +83,7 @@ const SignInForm = ({ signUser, current_user }) => {
             <button type="submit" className="waves-effect waves-light btn-large btn-success-color text-white col-12">valider</button>
 
 
-            {
-
-                alertMessages ? <Alert messages={alertMessages.messages} type={alertMessages.type} removeMessages={(value) => {
-                    setAlertMessages(value)
-                }} /> : null
-            }
-
+            <Alert/>
         </form>
     )
 }

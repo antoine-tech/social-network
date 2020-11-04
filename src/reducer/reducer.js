@@ -3,13 +3,15 @@ const initialState = {
     current_user: {},
     jwt: "",
     loading: false,
-    messages:{
-        type:"danger",
+    messages: {
+        type: "success",
         messages: [
-            {message:"hello world"}
+            {
+                message: "hello world"
+            }
         ]
     }
-   
+
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,10 +20,16 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case "SET_CURRENT_USER":
 
-
-            console.log(action.payload)
+            // DEBUG
+            //console.log(action.payload)
 
             if (action.payload) {
+                newState.messages = {
+                    type: "success",
+                    messages: [
+                        { message: "Connexion reussie" }
+                    ]
+                }
                 newState.current_user = action.payload.user
                 newState.jwt = action.payload.jwt
             }
@@ -30,6 +38,7 @@ const reducer = (state = initialState, action) => {
 
         case "PAGE_IS_LOADING":
 
+            // DEBUG
             //console.log(action.payload);
 
             if (action.payload) {
@@ -42,14 +51,15 @@ const reducer = (state = initialState, action) => {
 
         case "SET_ALERT_MESSAGE":
 
-            console.log(action.payload);
+            // DEBUG
 
             if (action.payload) {
 
-                newState.messages = action.payload.messages;
+                newState.messages = { messages: action.payload.messages, type: action.payload.type };
 
             }
 
+            console.log(newState)
             return newState
 
 

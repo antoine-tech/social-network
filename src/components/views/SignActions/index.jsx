@@ -1,16 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
-import * as actionDispatch from "../../../store/actions";
 
 
 
-const mapStateToProps = (state) => {
-    return {
-        messages: state.messages
-    }
-}
-
-const SignActions = ({ component: Component, imageSrc, messages, ...props }) => {
+const SignActions = ({ component: Component, imageSrc, ...props }) => {
 
     return (
 
@@ -25,11 +17,8 @@ const SignActions = ({ component: Component, imageSrc, messages, ...props }) => 
 
                 <div className="d-none d-md-block col-md-6 p-0">
 
-                    {
-                        console.log(messages)
-                    }
-                    <Component messages={messages} />
-
+                
+                    <Component />
 
 
                 </div>
@@ -59,4 +48,4 @@ const SignActions = ({ component: Component, imageSrc, messages, ...props }) => 
 }
 
 
-export default connect(mapStateToProps)(SignActions);
+export default SignActions;

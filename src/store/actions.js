@@ -1,3 +1,4 @@
+import Alert from "../components/Alert";
 import ApiEngine from "../service/ApiEngine";
 
 
@@ -5,6 +6,14 @@ import ApiEngine from "../service/ApiEngine";
 const setCurrentUser = (userDatas) => {
     return { type: "SET_CURRENT_USER", payload: userDatas }
 }
+
+export const setAlertMessage = (alertMessages) =>
+{
+    return {
+        type: "SET_ALERT_MESSAGE", payload: alertMessages
+    }
+}
+
 
 // instantiating API wrapper
 const API_ENGINE = new ApiEngine();
@@ -22,6 +31,7 @@ export const asncSetCurrentUser = (userDatas) => {
             dispatch(
                 setCurrentUser(response)
             )
+
         }else{
 
             //display error
@@ -31,13 +41,47 @@ export const asncSetCurrentUser = (userDatas) => {
     }
 }
 
-
-export const setAlertMessage = (alertMessages) =>
+export const asncRegisterUser = (userDatas) =>
 {
-    return {
-        type: "SET_ALERT_MESSAGE", payload: alertMessages
+
+    return async (dispatch) => {
+
+        let response = await API_ENGINE.signUp(userDatas);
+
+
+
+        if (response.hasOwnProperty("user")) {
+
+            dispatch(
+                setAlertMessage(
+                    {
+                        type:"success",
+                        messages: [
+                            {message:"Compte crée avec succès"}
+                        ]
+                    }
+                )
+            )
+
+        }else{
+
+            dispatch(
+                setAlertMessage(
+                    {
+                        type:"danger",
+                        messages: response.data[0].messages
+                    }
+                )
+            )
+
+        }
+
     }
 }
+
+
+
+
 
 
 
