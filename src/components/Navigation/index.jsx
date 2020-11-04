@@ -77,12 +77,12 @@ const Navigation = ({ current_user }) => {
                                 <>
 
                                     <li>
-                                        <NavLink exact to="/sign-up" active className="btn btn-lg btn-success-color  my-2">Inscription</NavLink>
+                                        <NavLink exact to="/sign-up" active className="waves-effect waves-light btn-large btn-success-color  my-2">Inscription</NavLink>
 
                                     </li>
 
                                     <li>
-                                        <NavLink exact to="/sign-in" active className="btn btn-lg btn-success-color my-2">Connexion</NavLink>
+                                        <NavLink exact to="/sign-in" active className="waves-effect waves-light btn-large btn-success-color my-2">Connexion</NavLink>
                                     </li>
 
                                 </>

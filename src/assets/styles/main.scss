@@ -5,14 +5,11 @@
 
 $primary-color:#FC9764;
 $secondary-color:#2B59C3;
-$danger-color:#F7508D;
+$danger-color:#E86858;
 $success-color:#32936F;
 $white:#fff;
+$light-color:#F1E9E3;
 
-.bg-gradient-primary {
-    background: $primary-color;
-    background: linear-gradient(90deg, $primary-color 0%, $primary-color 100%);
-}
 
 .bg-primary-color {
     background-color: $primary-color;
@@ -30,7 +27,6 @@ $white:#fff;
 .bg-danger-color {
     background-color: $danger-color;
 }
-
 
 
 .btn-primary-color{
@@ -60,6 +56,9 @@ nav li a {
 
 nav{
     width:100%;
+    border-bottom:unset;
+    box-shadow: unset;
+    height: 5rem;
 }
 
 nav a{
@@ -96,6 +95,10 @@ nav a{
     cursor: pointer;
 }
 
+.menu-left a:hover{
+    text-decoration: none;
+}
+
 
 @media screen and (min-width:992px)
 {
@@ -128,5 +131,9 @@ nav a{
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    h1{
+        font-size: 2.5rem;
+    }
 }
 

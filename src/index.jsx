@@ -17,6 +17,7 @@ import fr from "./assets/translations/fr";
 import '@fortawesome/fontawesome-free/css/all.min.css'; 
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import "mdbootstrap/css/bootstrap.min.css";
+import "materialize-css/sass/materialize.scss";
 import "./assets/styles/main.scss";
 
 
