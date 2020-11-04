@@ -2,7 +2,14 @@ const initialState = {
     posts: [],
     current_user: {},
     jwt: "",
-    loading: false
+    loading: false,
+    messages:{
+        type:"danger",
+        messages: [
+            {message:"hello world"}
+        ]
+    }
+   
 }
 
 const reducer = (state = initialState, action) => {
@@ -23,7 +30,7 @@ const reducer = (state = initialState, action) => {
 
         case "PAGE_IS_LOADING":
 
-            console.log(action.payload);
+            //console.log(action.payload);
 
             if (action.payload) {
 
@@ -31,7 +38,20 @@ const reducer = (state = initialState, action) => {
 
             }
 
+            return newState;
+
+        case "SET_ALERT_MESSAGE":
+
+            console.log(action.payload);
+
+            if (action.payload) {
+
+                newState.messages = action.payload.messages;
+
+            }
+
             return newState
+
 
         default:
             return state;

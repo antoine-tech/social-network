@@ -6,7 +6,6 @@ const setCurrentUser = (userDatas) => {
     return { type: "SET_CURRENT_USER", payload: userDatas }
 }
 
-
 // instantiating API wrapper
 const API_ENGINE = new ApiEngine();
 
@@ -31,5 +30,15 @@ export const asncSetCurrentUser = (userDatas) => {
 
     }
 }
+
+
+export const setAlertMessage = (alertMessages) =>
+{
+    return {
+        type: "SET_ALERT_MESSAGE", payload: alertMessages
+    }
+}
+
+
 
 

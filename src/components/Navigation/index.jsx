@@ -52,7 +52,7 @@ const Navigation = ({ current_user }) => {
 
             <div className="menu-left" id="navigation-menu">
 
-                <i class="fas fa-times fa-2x" id="close" onClick={(event) => handleToogleMenu(event)} data-target="#navigation-menu"></i>
+                <i className="fas fa-times fa-2x" id="close" onClick={(event) => handleToogleMenu(event)} data-target="#navigation-menu"></i>
 
                 <ul>
 
