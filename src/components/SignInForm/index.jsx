@@ -54,10 +54,7 @@ const SignInForm = ({ signUser, current_user, messages: alertMessages }) => {
 
 
             <h1 className="text-center">De retour parmis nous ? </h1>
-
-
-            {JSON.stringify(current_user)}
-
+            
 
             <small>* champs obligatoires</small>
 

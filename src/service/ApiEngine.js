@@ -14,6 +14,7 @@ class ApiEngine {
         // adding headers to fetch
         headers = authenticated && jwt_token ? { ...headers, ...authHeaders } : headers;
 
+
         // constructing array of options to pass it to fetch
         let options = {
             method: method,
@@ -24,11 +25,12 @@ class ApiEngine {
 
         options = body ? { ...options, ...{ body: JSON.stringify(body) } } : options;
 
-        // executing call to api
-        let api_response = await fetch(this.endpoint, options
 
-        ).then((response) => response.json())
-            .then((error) => error);
+
+        // executing call to api
+        let api_response = await fetch(this.endpoint, options)
+        .then((response) => response.json())
+        .then((error) => error);
 
         // return api response
         return api_response;

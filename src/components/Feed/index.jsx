@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import CardPost from "../../assets/CardPost";
+import CardPost from "../CardPost";
 import * as actionDispatch from "../../store/actions"
 
 
@@ -54,7 +54,6 @@ const Feed = ({ posts, loadPosts, loadMorePosts }) => {
 
                 {
                     posts.map((e) => {
-                        console.log(e)
                         let { id, like, created_at, updated_at, user, text } = e;
                         return <CardPost key={id} author={user} like={like} text={text} created_at={created_at} updated_at={updated_at} />
                     })

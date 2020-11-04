@@ -6,9 +6,10 @@ const initialState = {
     messages: {
         type: "success",
         messages: [
-            {
-                message: "hello world"
-            }
+            // testing purpose
+            // {
+            //     message: "hello world"
+            // }
         ]
     }
 }

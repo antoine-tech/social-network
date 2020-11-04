@@ -82,7 +82,7 @@ export const asncSetCurrentUser = (userDatas) => {
             Cookies.set('current_user', JSON.stringify(response.user));
 
             // SETTING jwt cookie
-            Cookies.set('jwt', JSON.stringify(response.jwt))
+            Cookies.set('jwt',response.jwt)
 
             // dispatching new state to store
             dispatch(

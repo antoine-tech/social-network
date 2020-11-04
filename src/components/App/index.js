@@ -24,6 +24,7 @@ import signInIllustration from "../../assets/img/sign_in_illustration.jpg";
 import signUpIllustration from "../../assets/img/sign_up_illustration.jpg";
 import { isUserLoggedIn } from "../../helpers/currentUser";
 import { connect } from "react-redux";
+import UserProfile from "../UserProfile";
 
 
 const mapStateToProps = (state) => {
@@ -75,6 +76,9 @@ const App = ({ current_user }) => {
 
 
                 <PrivateRoute path={"/wall"} component={Wall} redirectPathObj={{ pathname: "/sign-in" }} />
+
+
+                <PrivateRoute path={"/users/:id"} component={UserProfile} redirectPathObj={{ pathname: "/sign-in" }}/>
 
 
             </Switch>
