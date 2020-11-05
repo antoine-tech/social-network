@@ -116,9 +116,9 @@ nav li a {
     color: $white
 }
 
-.nav-brand{
+.nav-brand {
     height: 5rem;
-    width:auto;
+    width: auto;
 }
 
 
@@ -244,9 +244,9 @@ nav a {
     margin-left: auto;
     margin-right: auto;
     border: unset;
-        border-bottom-color: unset;
-        border-bottom-style: unset;
-        border-bottom-width: unset;
+    border-bottom-color: unset;
+    border-bottom-style: unset;
+    border-bottom-width: unset;
     box-shadow: unset;
     padding: 1.5rem;
     margin-top: 0;
@@ -322,7 +322,7 @@ nav a {
     overflow: auto;
 }
 
-i{
+i {
     cursor: pointer;
 }
 
@@ -344,4 +344,13 @@ i{
     margin: initial;
     height: initial;
     border: initial;
+}
+
+// FLEX BREAKPOINTS
+
+
+@media screen and (max-width:768px) {
+    .justify-content-center-md {
+        justify-content: center;
+    }
 }

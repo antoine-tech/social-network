@@ -20,7 +20,7 @@ const Home = () => {
                         </h1>
 
 
-                    <div className="row d-flex flex-wrap col-12 justify-content-center">
+                    <div className="row d-flex flex-wrap col-12 justify-content-center-md">
 
                         <Link to="/register" className="btn-secondary-color waves-effect waves-light btn-large col-md-4 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center">Inscription</Link>
 
