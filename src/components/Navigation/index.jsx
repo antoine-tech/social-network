@@ -38,7 +38,7 @@ const Navigation = ({ current_user }) => {
             <nav className="navbar bg-primary-color absolute-top navbar-dark">
 
 
-                <NavLink exact to="/" onClick={(event)=>handleToogleMenu(event)} active className="active text-white font-weight-bold">My Social Network</NavLink>
+                <NavLink exact to="/" onClick={(event) => handleToogleMenu(event)} active className="active text-white font-weight-bold">My Social Network</NavLink>
 
 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-menu"
@@ -56,48 +56,65 @@ const Navigation = ({ current_user }) => {
 
                 <ul>
 
-                    <li>
-                        <NavLink onClick={(event)=>handleToogleMenu(event)} exact to="/" active className="active">Accueil</NavLink>
-                    </li>
+                    <div>
 
-                    {   // CHECKING WETHER USER IS LOGGED IN TO DISPLAY LINK ACCORDINGLY
-                        currentUser.isUserLoggedIn(current_user) ?
+                        <li>
+                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/" active className="active"><i class="fas fa-home mr-4"></i>Accueil</NavLink>
+                        </li>
 
-                            (
-                                <>
+                        {   // CHECKING WETHER USER IS LOGGED IN TO DISPLAY LINK ACCORDINGLY
+                            currentUser.isUserLoggedIn(current_user) ?
 
-
-                                    <li>
-                                        <NavLink onClick={(event)=>handleToogleMenu(event)} exact to="/wall" active className="active">Mon mur</NavLink>
-                                    </li>
-
-                                </>
-                            )
-                            :
-                            (
-                                <>
-
-                                    <li>
-                                        <NavLink onClick={(event)=>handleToogleMenu(event)} exact to="/sign-up" active className="waves-effect waves-light btn-large btn-success-color  my-2">Inscription</NavLink>
-
-                                    </li>
-
-                                    <li>
-                                        <NavLink onClick={(event)=>handleToogleMenu(event)} exact to="/sign-in" active className="waves-effect waves-light btn-large btn-success-color my-2">Connexion</NavLink>
-                                    </li>
-
-                                </>
-                            )
+                                (
 
 
-                    }
+                                    <>
+                                        <li>
+                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/wall" active ><i class="fas fa-comment-alt mr-4"></i>Mon mur</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/account" active><i class="fas fa-user mr-4"></i>Mon compte</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/sign-out" active ><i class="fas fa-power-off mr-4"></i>Deconnexion</NavLink>
+                                        </li>
 
+
+                                        <li>
+                                            <NavLink to="/posts/create" className="btn-success-color waves-effect waves-light btn-large col-12 btn-rounded my-4">PUBLIER</NavLink>
+                                        </li>
+
+                                    </>
+                                )
+                                :
+                                (
+                                    <>
+
+                                        <li>
+                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/sign-up" active ><i class="fas fa-pen mr-4"></i>Inscription</NavLink>
+
+                                        </li>
+
+                                        <li>
+                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/sign-in" active ><i class="far fa-hand-spock mr-4"></i>Connexion</NavLink>
+                                        </li>
+
+                                    </>
+
+                                )
+
+
+
+
+
+                        }
+
+                    </div>
 
                 </ul>
 
 
             </div>
-
         </>
 
 

@@ -36,6 +36,19 @@ const reducer = (state = initialState, action) => {
 
             return newState;
 
+
+        case "EDIT_CURRENT_USER":
+
+            // DEBUG
+            console.log(action.payload)
+
+            // if (action.payload) {
+            //     newState.current_user = action.payload.current_user
+            // }
+
+            return newState;
+
+
         case "PAGE_IS_LOADING":
 
             // DEBUG
@@ -74,9 +87,9 @@ const reducer = (state = initialState, action) => {
 
         case "LOAD_MORE_POSTS":
 
-        console.log(action.payload)
+            console.log(action.payload)
             if (action.payload) {
-                newState.posts = [...newState.posts,...action.payload]
+                newState.posts = [...newState.posts, ...action.payload]
             }
 
             return newState;

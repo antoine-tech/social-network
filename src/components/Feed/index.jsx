@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import CardPost from "../CardPost";
 import * as actionDispatch from "../../store/actions"
+import { Link } from "react-router-dom";
 
 
 
@@ -46,28 +47,59 @@ const Feed = ({ posts, loadPosts, loadMorePosts }) => {
 
 
     return (
-        
-        <div className="col-12 col-lg-6" id="feed-container">
+
+        <div className="col-12 col-lg-6 d-flex flex-direction justify-content-center align-items-center" id="feed-container">
 
 
-            <div className="overflow-auto">
 
-                {
-                    posts.map((e) => {
-                        let { id, like, created_at, updated_at, user, text } = e;
-                        return <CardPost key={id} author={user} like={like} text={text} created_at={created_at} updated_at={updated_at} />
-                    })
-                }
+            {
+                posts.length > 0 &&
+                (
+                    <div className="overflow-auto">
+
+                        {
+                            posts.map((e) => {
+                                let { id, like, created_at, updated_at, user, text } = e;
+                                return <CardPost key={id} author={user} like={like} text={text} created_at={created_at} updated_at={updated_at} />
+                            })
+                        }
+
+                    </div>
+                )
+
+            }
 
 
-            </div>
+
 
 
 
             <div className="row col-12 px-4 d-flex align-items-center justify-content-center">
 
+                {
+                    posts.length === 0 ?
 
-                <button onClick={handleClick} className="btn-secondary-color waves-effect waves-light btn-large col-md-4 col-12 btn-rounded m-4">VOIR <sup>+</sup></button>
+
+                        (
+                            <>
+                                <h3 className="text-dark">Pas de posts pour le moment ... </h3>
+
+                                <Link to="/posts/create" className="btn-secondary-color waves-effect waves-light btn-large col-md-4 col-12 btn-rounded m-4">REDIGER</Link>
+                            </>
+                        )
+
+                        :
+
+                        (
+
+                            <button onClick={handleClick} className="btn-secondary-color waves-effect waves-light btn-large col-md-4 col-12 btn-rounded m-4">VOIR <sup>+</sup></button>
+
+
+                        )
+
+
+                }
+
 
 
 

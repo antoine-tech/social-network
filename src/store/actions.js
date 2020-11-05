@@ -14,13 +14,14 @@ export const setAlertMessage = (alertMessages) => {
 }
 
 
+// LOAD 10 LAST POSTS TO INITILAIZE DOM CONTENT ON WALL VIEW
 const loadPosts = (posts) => {
     return {
         type: "LOAD_POSTS",
         payload: posts
     }
 }
-
+// LOAD MORE POST ACTION TO LOAD 10 FOLLOWING POSTS EXECUTED ON CLICK LOAD MORE BUTTON
 const loadMorePosts = (posts) => {
     return {
         type: "LOAD_MORE_POSTS",
@@ -28,10 +29,31 @@ const loadMorePosts = (posts) => {
     }
 }
 
+// EDIT USER PROFILE
+const editUser = (userDatas) =>
+{
+    return {
+        type:"EDIT_CURRENT_USER",
+        payload:userDatas
+    }
+}
+
 
 
 // instantiating API wrapper
 const API_ENGINE = new ApiEngine();
+
+
+export const asncEditUser = (userDatas) => 
+{
+    return async (dispatch) =>
+    {
+        // CALL API EDIT DATAS
+        dispatch(
+            editUser(userDatas)
+        );
+    }
+}
 
 
 export const asncLoadPosts = (currentPostNumber) => {
