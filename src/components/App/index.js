@@ -44,7 +44,7 @@ const App = ({ current_user }) => {
                 <Route exact path={"/"} component={Home} />
 
 
-                <Route path={"/sign-in"}>
+                <Route path={"/login"}>
 
                     {
                         isUserLoggedIn(current_user) ? <Redirect to={"/wall"} /> : <SignActions component={SignInForm} imageSrc={signUpIllustration} />
@@ -56,10 +56,10 @@ const App = ({ current_user }) => {
 
 
 
-                <Route path={"/sign-up"}>
+                <Route path={"/register"}>
 
                     {
-                        isUserLoggedIn(current_user) ? <Redirect to={"/sign-in"} /> : <SignActions component={SignUpForm} imageSrc={signInIllustration} />
+                        isUserLoggedIn(current_user) ? <Redirect to={"/login"} /> : <SignActions component={SignUpForm} imageSrc={signInIllustration} />
 
                     }
 
@@ -67,10 +67,10 @@ const App = ({ current_user }) => {
 
 
 
-                <Route path={"/account"}>
+                <Route path={"/profile"}>
 
                     {
-                        isUserLoggedIn(current_user) ? <SignActions component={EditForm} imageSrc={editIllustration} />  : <Redirect to={"/sign-in"} />
+                        isUserLoggedIn(current_user) ? <SignActions component={EditForm} imageSrc={editIllustration} />  : <Redirect to={"/login"} />
 
                     }
 
@@ -78,10 +78,10 @@ const App = ({ current_user }) => {
 
 
 
-                <PrivateRoute path={"/wall"} component={Wall} redirectPathObj={{ pathname: "/sign-in" }} />
+                <PrivateRoute path={"/wall"} component={Wall} redirectPathObj={{ pathname: "/login" }} />
 
 
-                <PrivateRoute path={"/users/:id"} component={UserProfile} redirectPathObj={{ pathname: "/sign-in" }} />
+                <PrivateRoute path={"/users/:id"} component={UserProfile} redirectPathObj={{ pathname: "/login" }} />
 
 
             </Switch>

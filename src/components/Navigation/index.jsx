@@ -72,7 +72,7 @@ const Navigation = ({ current_user }) => {
                                             <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/wall" active ><i class="fas fa-comment-alt mr-4"></i>Mon mur</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/account" active><i class="fas fa-user mr-4"></i>Mon compte</NavLink>
+                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/profile" active><i class="fas fa-user mr-4"></i>Mon compte</NavLink>
                                         </li>
                                         <li>
                                             <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/sign-out" active ><i class="fas fa-power-off mr-4"></i>Deconnexion</NavLink>
@@ -90,12 +90,12 @@ const Navigation = ({ current_user }) => {
                                     <>
 
                                         <li>
-                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/sign-up" active ><i class="fas fa-pen mr-4"></i>Inscription</NavLink>
+                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/register" active ><i class="fas fa-pen mr-4"></i>Inscription</NavLink>
 
                                         </li>
 
                                         <li>
-                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/sign-in" active ><i class="far fa-hand-spock mr-4"></i>Connexion</NavLink>
+                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/login" active ><i class="far fa-hand-spock mr-4"></i>Connexion</NavLink>
                                         </li>
 
                                     </>

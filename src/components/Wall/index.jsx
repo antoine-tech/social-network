@@ -41,7 +41,7 @@ const Wall = ({ toogleModal, modal_post_creation_open_state}) => {
                     <a href="/" onClick={handleClick} className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center">PUBLIER </a>
 
 
-                    <Link to="/account" className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center">MON COMPTE</Link>
+                    <Link to="/profile" className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center">MON COMPTE</Link>
 
                 </div>
 

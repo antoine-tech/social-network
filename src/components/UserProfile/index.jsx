@@ -26,8 +26,6 @@ const UserProfile = (props) => {
 
             let userDatasResponse = await API_ENGINE.find(`/users?username=${userId}`, true, jwt_token);
 
-            console.log(userDatasResponse);
-
             let userPostsDatasResponse = await API_ENGINE.find(`/posts?user.id=${userDatasResponse[0].id}`, true, jwt_token);
 
 
@@ -85,7 +83,7 @@ const UserProfile = (props) => {
                     <Link to="/wall" className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center mx-auto">PUBLIER </Link>
 
 
-                    <Link to="/account" className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center mx-auto">MON COMPTE</Link>
+                    <Link to="/profile" className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center mx-auto">MON COMPTE</Link>
 
                 </div>
             </div>
