@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 // method to access posts state in store
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts
+        posts: state.posts, 
+        modal_post_creation_open_state: state.modal_post_creation_open_state
     }
 }
 
@@ -22,10 +23,11 @@ const mapDispatchToProps = (dispatch) => {
         loadMorePosts: (currentPostNumber) => dispatch(
             actionDispatch.asncLoadMorePosts(currentPostNumber)
         ),
+        toogleModal: (value) => { dispatch({ type: "CHANGE_MODAL_OPEN_STATE", payload:value }) }
     }
 }
 
-const Feed = ({ posts, loadPosts, loadMorePosts }) => {
+const Feed = ({ posts, loadPosts, loadMorePosts, toogleModal, modal_post_creation_open_state }) => {
 
 
     // USE EFFECT TARGETING ON COMPONENT WILL MOUNT LIFECYCLE HOOK
@@ -45,10 +47,17 @@ const Feed = ({ posts, loadPosts, loadMorePosts }) => {
         loadMorePosts(postNumber);
     }
 
+    const openModal = (event) =>
+    {
+        event.preventDefault();
+        
+        toogleModal(!modal_post_creation_open_state);
+    }
+
 
     return (
 
-        <div className="col-12 col-lg-6 d-flex flex-direction justify-content-center align-items-center" id="feed-container">
+        <div className="col-12 col-lg-6" id="feed-container">
 
 
 
@@ -84,7 +93,7 @@ const Feed = ({ posts, loadPosts, loadMorePosts }) => {
                             <>
                                 <h3 className="text-dark">Pas de posts pour le moment ... </h3>
 
-                                <Link to="/posts/create" className="btn-secondary-color waves-effect waves-light btn-large col-md-4 col-12 btn-rounded m-4">REDIGER</Link>
+                                <button onClick={openModal} className="btn-secondary-color waves-effect waves-light btn-large col-md-4 col-12 btn-rounded m-4">REDIGER</button>
                             </>
                         )
 

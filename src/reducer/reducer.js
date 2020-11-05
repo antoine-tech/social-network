@@ -102,6 +102,17 @@ const reducer = (state = initialState, action) => {
 
             return newState
 
+        case "ADD_POST":
+
+            //console.log(action.payload);
+
+              if (action.payload) {
+                newState.posts = [...newState.posts, action.payload]
+            }
+
+            return newState
+
+
         case "LOAD_POSTS":
 
             //console.log(action.payload);

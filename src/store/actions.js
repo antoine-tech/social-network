@@ -46,6 +46,17 @@ const deleteUser = (userId) =>{
 }
 
 
+export const addPost = (postDatas) =>
+{
+    return {
+        type: "ADD_POST",
+        payload: postDatas
+    }
+}
+
+
+
+
 
 // instantiating API wrapper
 const API_ENGINE = new ApiEngine();
