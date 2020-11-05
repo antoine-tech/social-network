@@ -1,3 +1,4 @@
+// PARSET DATE AS DD MM AAAA 
 export const parseDate = (string) => {
     let date = new Date(string);
 
@@ -11,6 +12,7 @@ export const parseDate = (string) => {
 
 }
 
+// PARSE THE MONTH NAE ABBREVIATED ACCORDING INPUT AS NUMBER FROM 1 TO 12
 const getMonthName = (monthNumber) => {
     monthNumber = parseInt(monthNumber)
     switch (monthNumber) {
