@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import Cookies from "js-cookie";
 
 // ACCESSING CURRENT STATE OF REDUX STORE USING CONNECT HOC
 import mapStateToProps from "../../store/mapperCurrentUser"
@@ -28,7 +29,13 @@ const Navigation = ({ current_user }) => {
 
     }
 
+    const handleSignOut = (event) =>{
+        event.preventDefault();
+        Cookies.remove('current_user');
+        Cookies.remove('jwt_token');
 
+        window.location.href = "/"
+    }
 
 
     return (
@@ -75,7 +82,7 @@ const Navigation = ({ current_user }) => {
                                             <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/profile" active><i class="fas fa-user mr-4"></i>Mon compte</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/sign-out" active ><i class="fas fa-power-off mr-4"></i>Deconnexion</NavLink>
+                                            <NavLink onClick={(event) => handleSignOut(event)} exact to="/sign-out" active ><i class="fas fa-power-off mr-4"></i>Deconnexion</NavLink>
                                         </li>
 
 
