@@ -1,8 +1,59 @@
-# Getting Started with Create React App
+# My Little social Network
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A little social app to practice redux stror, middleware, auth and routing using React JS
 
-## Available Scripts
+
+
+## Table des matières
+
+- [Description](#Description)
+- [Quick start](#Quick-start)
+- [Available Scripts](#Available-Scripts)
+- [Contributor](#Contributor)
+
+
+
+## Description
+
+
+Api was designed using Strapi CMS with three collections Users, Posts and Likes
+Api is available  at the following adress <https://github.com/antoine-tech/social-network-api>
+
+Features implemented are the following one: 
+
+1- Current user management Sign In / Sign Out 
+2- Registration
+3- Routing
+4- Profile update
+5- Access to public user profiles
+6- Access to posts datas
+7- Post creation
+8- Like/unlike feature 
+
+## Quick-start
+
+1- Lauch Strapi api using:
+
+```
+npm run develop
+
+```
+
+2- Launch React App
+
+```
+npm start
+
+```
+
+3- Create an account
+
+Have fun :-)
+
+
+
+
+## Available-Scripts
 
 In the project directory, you can run:
 
@@ -68,3 +119,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## Contributor
+
+**Antoine LE GUILLOU**
+
+- <https://github.com/antoine-leguillou>
+
