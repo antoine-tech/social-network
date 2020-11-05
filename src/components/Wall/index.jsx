@@ -18,9 +18,7 @@ const Wall = () => {
 
                     <Link to="/account" className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center">MON COMPTE</Link>
 
-
                 </div>
-
 
                 <Feed />
 

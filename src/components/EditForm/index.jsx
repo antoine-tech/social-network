@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Alert from "../Alert";
 import * as ActionDispatch from "../../store/actions"
@@ -11,11 +11,26 @@ const mapStateToprops = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        editUser: (userDatas) => { dispatch(ActionDispatch.asncEditUser(userDatas)) },
+        editUser: (userDatas, userId) => { dispatch(ActionDispatch.asncEditUser(userDatas, userId)) },
         setAlertMessages: (alertMessages) => { dispatch(ActionDispatch.setAlertMessage(alertMessages)) }
     }
 }
 const EditForm = ({ current_user, editUser, setAlertMessages }) => {
+
+
+
+    useEffect(() =>
+
+        setAlertMessages(
+            {
+                type: "success",
+                messages: [
+                    { message: "Bienvenue sur votre espace personnel vous pouvez mettre à jour vos informations ci dessus." }
+                ]
+            }
+        )
+
+        , [0])
 
     const handleSubmit = (event) => {
 
@@ -26,20 +41,35 @@ const EditForm = ({ current_user, editUser, setAlertMessages }) => {
         let password = document.querySelector("#user_password").value;
         let password_confirmation = document.querySelector("#user_password_confirmation").value;
 
-        if (password === password_confirmation) {
-            let userDatas = {
-                username: username,
-                email: email,
-                password: password
+        let userId = current_user.id;
+
+        if (username !== "" && email !== "" && password !== "" && password_confirmation !== "") {
+
+            if (password === password_confirmation) {
+                let userDatas = {
+                    username: username,
+                    email: email,
+                    password: password
+                }
+
+                editUser(userDatas, userId);
+            } else {
+                setAlertMessages(
+                    {
+                        type: "danger",
+                        messages: [
+                            { message: "Les mots de passes doivent êtres identiques" }
+                        ]
+                    }
+                )
             }
 
-            editUser(userDatas)
         } else {
             setAlertMessages(
                 {
-                    type: "success",
+                    type: "danger",
                     messages: [
-                        { message: "Les mots de passes doivent êtres identiques" }
+                        { message: "L'ensemble des champs doivent être remplis" }
                     ]
                 }
             )
@@ -53,7 +83,6 @@ const EditForm = ({ current_user, editUser, setAlertMessages }) => {
 
             <h1 className="text-center">Mettre à jour mes informations :</h1>
 
-
             <small>* champs obligatoires</small>
 
             <hr className="bg-white my-4" />
@@ -62,7 +91,7 @@ const EditForm = ({ current_user, editUser, setAlertMessages }) => {
             <div className="form-group">
 
                 <label htmlFor="user_login">Identifiant *</label>
-                <input type="text" name="user_login" id="user_login" className="form-control" value={current_user.username} />
+                <input type="text" name="user_login" id="user_login" className="form-control" defaultValue={current_user.username} />
 
             </div>
 
@@ -70,7 +99,7 @@ const EditForm = ({ current_user, editUser, setAlertMessages }) => {
             <div className="form-group">
 
                 <label htmlFor="user_email">Adresse email *</label>
-                <input type="email" name="user_email" id="user_email" className="form-control" value={current_user.email} />
+                <input type="email" name="user_email" id="user_email" className="form-control" defaultValue={current_user.email} />
 
             </div>
 

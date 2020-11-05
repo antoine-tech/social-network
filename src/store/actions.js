@@ -30,11 +30,11 @@ const loadMorePosts = (posts) => {
 }
 
 // EDIT USER PROFILE
-const editUser = (userDatas) =>
-{
+const editUser = (userDatas) => {
+
     return {
-        type:"EDIT_CURRENT_USER",
-        payload:userDatas
+        type: "EDIT_CURRENT_USER",
+        payload: userDatas
     }
 }
 
@@ -44,28 +44,44 @@ const editUser = (userDatas) =>
 const API_ENGINE = new ApiEngine();
 
 
-export const asncEditUser = (userDatas) => 
-{
-    return async (dispatch) =>
-    {
+export const asncEditUser = (userDatas, userId) => {
+    return async (dispatch) => {
         // CALL API EDIT DATAS
-        dispatch(
-            editUser(userDatas)
-        );
+
+        let jwt_token = Cookies.get("jwt");
+
+        let response = await API_ENGINE.update(userDatas, `/users/${userId}`, true, jwt_token);
+
+
+        if (!response.hasOwnProperty("statusCode")) {
+            dispatch(
+                editUser(response)
+            );
+        } else {
+            dispatch(
+                setAlertMessage({
+                    type: "danger",
+                    messages: response.data[0].messages
+                })
+            )
+        }
+
+
     }
 }
 
 
 export const asncLoadPosts = (currentPostNumber) => {
     return async (dispatch) => {
-        let response = await API_ENGINE.find(`/posts?_start=${currentPostNumber}&_limit=10`);
+
+        let jwt_token = Cookies.get("jwt");
+
+        let response = await API_ENGINE.find(`/posts?_start=${currentPostNumber}&_limit=10`, true, jwt_token);
 
         if (response.length > 0) {
             dispatch(
                 loadPosts(response)
             )
-        }else{
-            // pas de datas to dislay create a post ?
         }
 
     }
@@ -73,14 +89,16 @@ export const asncLoadPosts = (currentPostNumber) => {
 
 export const asncLoadMorePosts = (currentPostNumber) => {
     return async (dispatch) => {
-        let response = await API_ENGINE.find(`/posts?_start=${currentPostNumber}&_limit=10`);
+
+
+        let jwt_token = Cookies.get("jwt");
+
+        let response = await API_ENGINE.find(`/posts?_start=${currentPostNumber}&_limit=10`, true, jwt_token);
 
         if (response.length > 0) {
             dispatch(
                 loadMorePosts(response)
             )
-        }else{
-            // pas de datas to dislay create a post ?
         }
 
     }
@@ -104,7 +122,7 @@ export const asncSetCurrentUser = (userDatas) => {
             Cookies.set('current_user', JSON.stringify(response.user));
 
             // SETTING jwt cookie
-            Cookies.set('jwt',response.jwt)
+            Cookies.set('jwt', response.jwt)
 
             // dispatching new state to store
             dispatch(
@@ -113,7 +131,13 @@ export const asncSetCurrentUser = (userDatas) => {
 
         } else {
 
-            //display error
+            // DISPATCHING ALERT MESSAGES
+            dispatch(
+                setAlertMessage({
+                    type: "danger",
+                    messages: response.data[0].messages
+                })
+            )
 
         }
 

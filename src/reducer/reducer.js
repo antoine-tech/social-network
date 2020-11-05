@@ -1,3 +1,5 @@
+import { act } from "react-dom/test-utils";
+
 const initialState = {
     posts: [],
     current_user: {},
@@ -39,12 +41,19 @@ const reducer = (state = initialState, action) => {
 
         case "EDIT_CURRENT_USER":
 
-            // DEBUG
             console.log(action.payload)
 
-            // if (action.payload) {
-            //     newState.current_user = action.payload.current_user
-            // }
+            if (action.payload) {
+
+                let userDatas = {...newState.current_user, ...action.payload}
+                newState.current_user = userDatas
+                newState.messages = {
+                    type: "success",
+                    messages: [
+                        { message: "Compte mis à jour avec succès" }
+                    ]
+                }
+            }
 
             return newState;
 
