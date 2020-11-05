@@ -1,11 +1,36 @@
 import React from "react";
 import Feed from "../Feed";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
+import { connect } from "react-redux";
+import Modal from "../Modal";
 
-const Wall = () => {
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        toogleModal: (value) => { dispatch({ type: "CHANGE_MODAL_OPEN_STATE", payload:value }) }
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        modal_post_creation_open_state: state.modal_post_creation_open_state
+    }
+}
+
+
+const Wall = ({ toogleModal, modal_post_creation_open_state}) => {
+
+
+    const handleClick = (event) =>
+    {
+        event.preventDefault();
+        
+        toogleModal(!modal_post_creation_open_state);
+    }
+
     return (
 
-        <div className="container-fluid full-screen d-flex justify-content-center align-items-center text-white bg-primary-color">
+        <div className="container-fluid full-screen d-flex justify-content-center align-items-center text-white bg-primary-color relative">
 
             <div className="container-fluid full-screen row col-12 offset-top-10 px-0 rounded">
 
@@ -13,7 +38,7 @@ const Wall = () => {
                 <div className="d-none d-lg-block col-lg-3">
 
 
-                    <Link to="/posts/create" className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center">PUBLIER </Link>
+                    <a href="/" onClick={handleClick} className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center">PUBLIER </a>
 
 
                     <Link to="/account" className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center">MON COMPTE</Link>
@@ -30,8 +55,11 @@ const Wall = () => {
 
 
             </div>
+
+            <Modal />
+
         </div>
     )
 }
 
-export default Wall;
+export default connect(mapStateToProps, mapDispatchToProps)(Wall);

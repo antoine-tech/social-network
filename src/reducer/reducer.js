@@ -5,6 +5,7 @@ const initialState = {
     current_user: {},
     jwt: "",
     loading: false,
+    modal_post_creation_open_state:false,
     messages: {
         type: "success",
         messages: [
@@ -113,13 +114,20 @@ const reducer = (state = initialState, action) => {
 
         case "LOAD_MORE_POSTS":
 
-            console.log(action.payload)
+            // console.log(action.payload)
             if (action.payload) {
                 newState.posts = [...newState.posts, ...action.payload]
             }
 
             return newState;
 
+        case "CHANGE_MODAL_OPEN_STATE":
+
+            console.log(action.payload)
+            newState.modal_post_creation_open_state = action.payload
+
+
+            return newState
         default:
             return state;
     }

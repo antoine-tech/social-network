@@ -62,21 +62,20 @@ export const asndeleteUser = (userId) =>
         let response = await API_ENGINE.delete(`/users/${userId}`, true, jwt_token);
 
 
-        console.log(response)
-
-
-        // if (!response.hasOwnProperty("statusCode")) {
-        //     dispatch(
-        //         deleteUser(userId)
-        //     );
-        // } else {
-        //     dispatch(
-        //         setAlertMessage({
-        //             type: "danger",
-        //             messages: response.data[0].messages
-        //         })
-        //     )
-        // }
+        if (!response.hasOwnProperty("statusCode")) {
+            dispatch(
+                deleteUser(userId)
+            );
+        } else {
+            dispatch(
+                setAlertMessage({
+                    type: "danger",
+                    messages: [
+                        { message: "Une erreure est survenue veuillez contacter le support technique" }
+                    ]
+                })
+            )
+        }
 
 
     }

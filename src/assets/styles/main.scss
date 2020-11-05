@@ -1,7 +1,10 @@
+// HELPER SIZING
+
 .full-screen {
     min-height: 100vh;
 }
 
+// COLORS
 
 $primary-color:#FC9764;
 $secondary-color:#2B59C3;
@@ -10,6 +13,27 @@ $success-color:#32936F;
 $white:#fff;
 $light-color:#F1E9E3;
 
+
+// PADDING HELPER FOR NAV TO MAIN OFFSET
+
+.offset-top-10 {
+    padding-top: 5.5rem;
+}
+
+
+// ROOT BACKGROUND
+#root {
+    background-color: $light-color;
+}
+
+
+a:hover {
+    text-decoration: unset;
+}
+
+
+
+// BACKGROUND HELPERS
 
 .bg-primary-color {
     background-color: $primary-color;
@@ -28,6 +52,7 @@ $light-color:#F1E9E3;
     background-color: $danger-color;
 }
 
+// BTN COLOR HELPERS
 
 .btn-primary-color {
     background-color: $primary-color;
@@ -45,15 +70,47 @@ $light-color:#F1E9E3;
     background-color: $success-color;
 }
 
-nav li a {
-    color: $white
+// BTN RADIUS
+
+.btn-rounded {
+    border-radius: 2rem;
 }
+
+// SPECIAL CONTAINER
+
+.overflow-auto {
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: block;
+    height: 66vh;
+    width: 100%;
+    ;
+}
+
+
+// POSITION HELPERS
 
 .absolute-top {
     position: absolute;
     top: 0;
     z-index: 1000;
 }
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+
+// NAVBAR
+
+nav li a {
+    color: $white
+}
+
 
 nav {
     width: 100%;
@@ -65,6 +122,8 @@ nav {
 nav a {
     font-size: 1.5rem;
 }
+
+// MENU LEFT
 
 .menu-left {
     position: fixed;
@@ -84,11 +143,12 @@ nav a {
     justify-content: space-evenly;
     list-style-type: none;
 
-    li{
+    li {
 
 
-        margin-top:2rem;
+        margin-top: 2rem;
         margin-bottom: 2rem;
+
         a {
             font-size: 2rem;
             color: $white;
@@ -96,7 +156,7 @@ nav a {
 
     }
 
-    
+
 }
 
 .menu-left #close {
@@ -133,6 +193,24 @@ nav a {
     right: 0;
 }
 
+// FEED CONTAINER
+
+#feed-container {
+    padding: 2.5rem;
+    height: 85vh;
+    border-radius: 5rem;
+    background-color: #FFF;
+}
+
+#feed-container-profile,
+#feed-container-buttons {
+    padding: 5.5rem;
+    height: 100vh;
+}
+
+
+// FORMS
+
 .form-sign-actions {
     padding: 2.5rem;
     background-color: #FFF;
@@ -147,14 +225,6 @@ nav a {
     }
 }
 
-.overflow-auto {
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: block;
-    height: 66vh;
-    width: 100%;
-    ;
-}
 
 // CARD
 
@@ -174,19 +244,7 @@ nav a {
 }
 
 
-.offset-top-10 {
-    padding-top: 5.5rem;
-}
-
-.btn-rounded {
-    border-radius: 2rem;
-}
-
-
-#root {
-    background-color: $light-color;
-}
-
+// CARD CONTENT STYLES
 
 .post-text {
     font-size: 2rem;
@@ -197,18 +255,63 @@ nav a {
     width: 2.5rem;
 }
 
-#feed-container {
+
+// MODAL
+
+@media screen and (min-width:992px)
+{
+    #modal{
+        border-radius: 5rem;
+    }
+}
+
+#modal.show {
+    background-color: $white;
+    z-index: 1000;
     padding: 2.5rem;
-    height: 85vh;
-    border-radius: 5rem;
-    background-color: #FFF;
+    min-height: 85vh;
 }
 
-#feed-container-profile, #feed-container-buttons {
-    padding: 5.5rem;
-    height: 100vh;
+#modal{
+    position: fixed;
 }
 
-a:hover {
-    text-decoration: unset;
+
+#modal, #modal *{
+    min-height: 0;
+    padding:0;
+    font-size: 0;
+    margin: 0;
+    height: 0;
+    border:unset;
+}
+
+#modal.show *{
+    min-height: initial;
+    padding:initial;
+    font-size: initial;
+    margin: initial;
+    height: initial;
+    border:initial;
+}
+
+#modal.show .body{
+    textarea{
+        height: 20em;
+        font-size: 1.5rem;
+    }
+}
+
+#modal .footer,#modal .header, #modal-footer{
+    flex-wrap: wrap;
+}
+
+#modal.show .header *{
+    font-size: 2.5rem;
+}
+
+#modal .footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
