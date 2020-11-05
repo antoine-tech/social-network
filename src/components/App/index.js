@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -28,6 +28,7 @@ import signUpIllustration from "../../assets/img/sign_up_illustration.jpg";
 import editIllustration from "../../assets/img/edit_illustration.jpg";
 
 import mapStateToProps from "../../store/mapperCurrentUser"
+import ErrorPage from "../views/ErrorPage";
 
 
 const App = ({ current_user }) => {
@@ -83,6 +84,16 @@ const App = ({ current_user }) => {
 
                 <PrivateRoute path={"/users/:id"} component={UserProfile} redirectPathObj={{ pathname: "/login" }} />
 
+                <Route path="/error">
+
+
+                    <ErrorPage/>
+
+
+                </Route>
+                
+
+                <Redirect to="/error"></Redirect>
 
             </Switch>
 

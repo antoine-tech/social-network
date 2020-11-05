@@ -80,7 +80,7 @@ const Navigation = ({ current_user }) => {
 
 
                                         <li>
-                                            <NavLink to="/posts/create" className="btn-success-color waves-effect waves-light btn-large col-12 btn-rounded my-4">PUBLIER</NavLink>
+                                            <NavLink to="/wall" className="btn-success-color waves-effect waves-light btn-large col-12 btn-rounded my-4">PUBLIER</NavLink>
                                         </li>
 
                                     </>
