@@ -41,11 +41,12 @@ const reducer = (state = initialState, action) => {
 
         case "EDIT_CURRENT_USER":
 
-            console.log(action.payload)
+            // DEBUG
+            // console.log(action.payload)
 
             if (action.payload) {
 
-                let userDatas = {...newState.current_user, ...action.payload}
+                let userDatas = { ...newState.current_user, ...action.payload }
                 newState.current_user = userDatas
                 newState.messages = {
                     type: "success",
@@ -53,6 +54,22 @@ const reducer = (state = initialState, action) => {
                         { message: "Compte mis à jour avec succès" }
                     ]
                 }
+            }
+
+            return newState;
+
+        case "DELETE_CURRENT_USER":
+
+            if (action.payload) {
+
+                newState.current_user = {}
+                newState.messages = {
+                    type: "info",
+                    messages: [
+                        { message: "Nous sommes désolé de vous voir partir, A bientôt peut être" }
+                    ]
+                }
+
             }
 
             return newState;

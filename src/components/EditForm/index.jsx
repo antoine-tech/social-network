@@ -12,10 +12,11 @@ const mapStateToprops = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         editUser: (userDatas, userId) => { dispatch(ActionDispatch.asncEditUser(userDatas, userId)) },
+        deleteUser: (userId) => { dispatch(ActionDispatch.asndeleteUser(userId)) },
         setAlertMessages: (alertMessages) => { dispatch(ActionDispatch.setAlertMessage(alertMessages)) }
     }
 }
-const EditForm = ({ current_user, editUser, setAlertMessages }) => {
+const EditForm = ({ current_user, editUser, setAlertMessages, deleteUser }) => {
 
 
 
@@ -31,6 +32,11 @@ const EditForm = ({ current_user, editUser, setAlertMessages }) => {
         )
 
         , [0])
+
+
+    const handleClick = (event) => {
+        deleteUser(current_user.id);
+    }
 
     const handleSubmit = (event) => {
 
@@ -119,12 +125,17 @@ const EditForm = ({ current_user, editUser, setAlertMessages }) => {
 
             </div>
 
-            <button type="submit" className="waves-effect waves-light btn-large btn-success-color text-white col-12">valider</button>
+            <button type="submit" className="waves-effect waves-light btn-large btn-success-color text-white col-12 my-2">valider</button>
 
-
+            <a href="/" onClick={handleClick} className="waves-effect waves-light btn-large btn-danger-color text-white col-12 my-2">supprimer</a>
+            
             <Alert />
 
         </form>
+
+
+
+
     )
 }
 

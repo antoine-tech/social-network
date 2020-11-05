@@ -38,10 +38,49 @@ const editUser = (userDatas) => {
     }
 }
 
+const deleteUser = (userId) =>{
+    return {
+        type: "DELETE_CURRENT_USER",
+        payload: userId
+    }
+}
+
 
 
 // instantiating API wrapper
 const API_ENGINE = new ApiEngine();
+
+
+
+export const asndeleteUser = (userId) =>
+{
+    return async (dispatch) => {
+        // CALL API EDIT DATAS
+
+        let jwt_token = Cookies.get("jwt");
+
+        let response = await API_ENGINE.delete(`/users/${userId}`, true, jwt_token);
+
+
+        console.log(response)
+
+
+        // if (!response.hasOwnProperty("statusCode")) {
+        //     dispatch(
+        //         deleteUser(userId)
+        //     );
+        // } else {
+        //     dispatch(
+        //         setAlertMessage({
+        //             type: "danger",
+        //             messages: response.data[0].messages
+        //         })
+        //     )
+        // }
+
+
+    }
+}
 
 
 export const asncEditUser = (userDatas, userId) => {
