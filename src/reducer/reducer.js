@@ -1,6 +1,7 @@
 import { act } from "react-dom/test-utils";
 
 const initialState = {
+
     posts: [],
     current_user: {},
     jwt: "",
@@ -17,10 +18,14 @@ const initialState = {
     }
 }
 
+// REDUCER ALLOW ANLYSIS OF COMMAND SENT BY DIPATCHERS AND UPDATE STATE ACCORDING VALUE PASSED IN PAYLOAD KEY
 const reducer = (state = initialState, action) => {
     const newState = { ...state };
 
     switch (action.type) {
+
+
+        // SET THE CURRENT USER
         case "SET_CURRENT_USER":
 
             // DEBUG
@@ -39,7 +44,8 @@ const reducer = (state = initialState, action) => {
 
             return newState;
 
-
+        
+        // EDIT THE CURRENT USER
         case "EDIT_CURRENT_USER":
 
             // DEBUG
@@ -59,7 +65,11 @@ const reducer = (state = initialState, action) => {
 
             return newState;
 
+        // DELETE THE CURRENT USER
         case "DELETE_CURRENT_USER":
+
+            // DEBUG
+            // console.log(action.payload)
 
             if (action.payload) {
 
@@ -75,7 +85,7 @@ const reducer = (state = initialState, action) => {
 
             return newState;
 
-
+        // PASS PAGE STATE TO LOADING (NOT IMPLEMENTED)
         case "PAGE_IS_LOADING":
 
             // DEBUG
@@ -88,7 +98,8 @@ const reducer = (state = initialState, action) => {
             }
 
             return newState;
-
+        
+        // SET ALERTS MESSAGES
         case "SET_ALERT_MESSAGE":
 
             // DEBUG
@@ -101,10 +112,12 @@ const reducer = (state = initialState, action) => {
             }
 
             return newState
-
+        
+        // ADD A POST TO POSTS ARRAY
         case "ADD_POST":
 
-            //console.log(action.payload);
+            // DEBUG
+            //console.log(newState)
 
             if (action.payload) {
                 newState.posts = [...newState.posts, action.payload]
@@ -112,10 +125,11 @@ const reducer = (state = initialState, action) => {
 
             return newState
 
+        // DELETE A POST IN POST ARRAY
         case "DELETE_POST":
 
-
-            //console.log(action.payload);
+            // DEBUG
+            //console.log(newState)
 
             if (action.payload) {
 
@@ -125,39 +139,50 @@ const reducer = (state = initialState, action) => {
             return newState
 
 
-
+        // LOAD POSTS AT FIRST INITIALIZATION
         case "LOAD_POSTS":
-
-            console.log(action.payload);
+            
+            // DEBUG
+            //console.log(newState)
 
             if (action.payload) {
                 newState.posts = action.payload;
             }
 
             return newState
-
+        
+        // LOAD MORE POSTS WHEN USER CLICK ON BUTTON LOAD MORE ON /wall PAGE
         case "LOAD_MORE_POSTS":
+            
+            // DEBUG
+            //console.log(newState)
 
-            // console.log(action.payload)
             if (action.payload) {
                 newState.posts = [...newState.posts, ...action.payload]
             }
 
             return newState;
+
+        // UPDATE A POST IN THE ARRAY OF POSTS AND RETURN POSTS WITH MODIFIED ONE
         case "UPDATE_POST":
-            // console.log(action.payload)
+           
+            // DEBUG
+            //console.log(newState)
+
             if (action.payload) {
 
                 newState.posts = [...newState.posts.filter((e)=>e.id!==action.payload.id), action.payload]
             }
 
             return newState
-
+        
+        // CHANGE OPEN STATE OF MODAL 
         case "CHANGE_MODAL_OPEN_STATE":
 
-            console.log(action.payload)
-            newState.modal_post_creation_open_state = action.payload
+            // DEBUG
+            //console.log(newState)
 
+            newState.modal_post_creation_open_state = action.payload
 
             return newState
         default:
