@@ -27,12 +27,7 @@ import signInIllustration from "../../assets/img/sign_in_illustration.jpg";
 import signUpIllustration from "../../assets/img/sign_up_illustration.jpg";
 import editIllustration from "../../assets/img/edit_illustration.jpg";
 
-
-const mapStateToProps = (state) => {
-    return {
-        current_user: state.current_user
-    }
-}
+import mapStateToProps from "../../store/mapperCurrentUser"
 
 
 const App = ({ current_user }) => {

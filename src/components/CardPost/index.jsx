@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import * as dateHelper from "../../helpers/parseDate"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 import * as ActionDispatch from "../../store/actions"
 
-import Cookies from "js-cookie";
-
 // IMAGE LOGO
 import mySocialNetworkLogo from "../../assets/img/my_social_network_logo.png";
 
-const mapStateToProps = (state) =>
-{
-    return {
-        current_user:state.current_user
-    }
-}
+// CURRENT USER SATE STORE ACCESSOR
+import mapStateToProps from "../../store/mapperCurrentUser"
 
 
 const mapDispatchToProps = (dispatch) =>

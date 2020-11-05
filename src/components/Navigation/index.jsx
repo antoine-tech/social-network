@@ -2,20 +2,14 @@ import React, { useState, useContext } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
+// ACCESSING CURRENT STATE OF REDUX STORE USING CONNECT HOC
+import mapStateToProps from "../../store/mapperCurrentUser"
+
 // HELPER TO CHECK WETHER CURRENT USER IS SET
 import * as currentUser from "../../helpers/currentUser";
 
-
 // IMAGE LOGO
 import mySocialNetworkLogo from "../../assets/img/my_social_network_logo.png";
-
-
-// ACCESSING CURRENT STATE OF REDUX STORE USING CONNECT HOC
-const mapStateToProps = (state) => {
-    return {
-        current_user: state.current_user
-    }
-}
 
 
 const Navigation = ({ current_user }) => {

@@ -21,7 +21,6 @@ const mapStateToProps = (state) => {
 }
 
 
-
 const SignInForm = ({ signUser, current_user, messages: alertMessages }) => {
 
 

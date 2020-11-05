@@ -2,12 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Alert from "../Alert";
 import * as ActionDispatch from "../../store/actions"
-
-const mapStateToprops = (state) => {
-    return {
-        current_user: state.current_user
-    }
-}
+import mapStateToProps from "../../store/mapperCurrentUser"
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -16,6 +11,7 @@ const mapDispatchToProps = (dispatch) => {
         setAlertMessages: (alertMessages) => { dispatch(ActionDispatch.setAlertMessage(alertMessages)) }
     }
 }
+
 const EditForm = ({ current_user, editUser, setAlertMessages, deleteUser }) => {
 
 
@@ -140,7 +136,7 @@ const EditForm = ({ current_user, editUser, setAlertMessages, deleteUser }) => {
 }
 
 
-export default connect(mapStateToprops, mapDispatchToProps)(EditForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EditForm)
 
 
 

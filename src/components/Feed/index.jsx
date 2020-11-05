@@ -2,10 +2,6 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import CardPost from "../CardPost";
 import * as actionDispatch from "../../store/actions"
-import { Link } from "react-router-dom";
-
-
-
 
 // method to access posts state in store
 const mapStateToProps = (state) => {

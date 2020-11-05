@@ -4,7 +4,6 @@ import Alert from "../Alert";
 import * as actionDispatch from "../../store/actions"
 import { connect } from "react-redux";
 
-
 // REDUX STORE HANDLERS 
 
 
