@@ -13,6 +13,11 @@ $success-color:#32936F;
 $white:#fff;
 $light-color:#F1E9E3;
 
+// OVERIDDE GRID DEFAULT CSS
+
+.row {
+    margin-bottom: 0;
+}
 
 // PADDING HELPER FOR NAV TO MAIN OFFSET
 
@@ -196,7 +201,7 @@ nav a {
 // FEED CONTAINER
 
 #feed-container {
-    padding: 2.5rem;
+    padding: 1.5rem;
     height: 85vh;
     border-radius: 5rem;
     background-color: #FFF;
@@ -204,7 +209,6 @@ nav a {
 
 #feed-container-profile,
 #feed-container-buttons {
-    padding: 5.5rem;
     height: 100vh;
 }
 
@@ -247,7 +251,15 @@ nav a {
     color: #414141;
 }
 
+
 // CARD CONTENT STYLES
+
+.card {
+    .like-and-share {
+        position: absolute;
+        bottom: 0;
+    }
+}
 
 .post-text {
     font-size: 2rem;
@@ -301,8 +313,8 @@ nav a {
     overflow: auto;
 }
 
-#modal h2 {
-    font-size: 2.5rem;
+i{
+    cursor: pointer;
 }
 
 

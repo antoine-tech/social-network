@@ -4,6 +4,7 @@ import ApiEngine from "../../service/ApiEngine";
 import Cookies from 'js-cookie'
 import CardPost from "../CardPost";
 import * as helperDates from "../../helpers/parseDate"
+import { Link } from "react-router-dom";
 
 
 const UserProfile = (props) => {
@@ -43,19 +44,17 @@ const UserProfile = (props) => {
         <div className="row col-12 bg-primary-color">
 
 
-
-            <div className="col-12 col-lg-6" id="feed-container-profile">
-
-
+            <div className="col-12 col-lg-6 py-5 px-0" id="feed-container-profile">
 
                 <div className="row col-12 px-4 d-flex align-items-center justify-content-center">
 
-                    <h1 className="my-4 text-white text-center">{userDatas?.username} - <small className="font-italic text-white">{userPostsDatas.length} Posts</small></h1>
-
-                    <h5 className="font-italic text-white">Membre depuis le {helperDates.parseDate(userDatas.created_at)}</h5>
+                    <h1 className="my-4 text-white text-center">{userDatas.username} - <small className="font-italic text-white">{userPostsDatas.length} Posts</small></h1>
 
                 </div>
 
+                <div className="row col-12 px-4 d-flex align-items-center justify-content-center">
+                    <h5 className="font-italic text-white">Membre depuis le {helperDates.parseDate(userDatas.created_at)}</h5>
+                </div>
 
                 <div className="overflow-auto">
 
@@ -63,7 +62,7 @@ const UserProfile = (props) => {
                         userPostsDatas.map((e) => {
                             console.log(e)
                             let { id, like, created_at, updated_at, user, text } = e;
-                            return <CardPost key={id} author={user} like={like} text={text} created_at={created_at} updated_at={updated_at} />
+                            return <CardPost key={id} id={id} author={user} like={like} text={text} created_at={created_at} updated_at={updated_at} />
                         })
                     }
 
@@ -78,13 +77,13 @@ const UserProfile = (props) => {
             <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center" id="feed-container-buttons">
 
                 <div className="w-100">
-                    <button className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center mx-auto">CONTACTER</button>
+                    <Link to="/" className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center mx-auto">CONTACTER</Link>
 
 
-                    <button className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center mx-auto">PUBLIER </button>
+                    <Link to="/wall" className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center mx-auto">PUBLIER </Link>
 
 
-                    <button className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center mx-auto">MON COMPTE</button>
+                    <Link to="/account" className="btn-secondary-color waves-effect waves-light btn-large col-md-9 col-12 btn-rounded m-4 d-flex align-items-center justify-content-center mx-auto">MON COMPTE</Link>
 
                 </div>
             </div>

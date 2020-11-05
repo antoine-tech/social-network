@@ -69,7 +69,7 @@ const Feed = ({ posts, loadPosts, loadMorePosts, toogleModal, modal_post_creatio
                         {
                             posts.map((e) => {
                                 let { id, like, created_at, updated_at, user, text } = e;
-                                return <CardPost key={id} author={user} like={like} text={text} created_at={created_at} updated_at={updated_at} />
+                                return <CardPost key={id} id={id} author={user} like={like} text={text} created_at={created_at} updated_at={updated_at} />
                             })
                         }
 

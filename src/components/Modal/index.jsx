@@ -47,7 +47,7 @@ const Modal = ({ toogleModal, modal_post_creation_open_state, current_user, addP
             let response = await API_ENGINE.create(datas, "/posts", true, jwt_token);
 
             if (!response.hasOwnProperty("statusCode")) {
-                
+
                 addPost(response);
 
             } else {
@@ -88,7 +88,7 @@ const Modal = ({ toogleModal, modal_post_creation_open_state, current_user, addP
 
             <div className="row text-dark">
 
-                <h2>Rediger un post :</h2>
+                <h2 style={{ fontSize: "2.5rem" }}>Rediger un post :</h2>
 
 
             </div>

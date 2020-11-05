@@ -5,7 +5,7 @@ const initialState = {
     current_user: {},
     jwt: "",
     loading: false,
-    modal_post_creation_open_state:false,
+    modal_post_creation_open_state: false,
     messages: {
         type: "success",
         messages: [
@@ -106,11 +106,24 @@ const reducer = (state = initialState, action) => {
 
             //console.log(action.payload);
 
-              if (action.payload) {
+            if (action.payload) {
                 newState.posts = [...newState.posts, action.payload]
             }
 
             return newState
+
+        case "DELETE_POST":
+
+
+            //console.log(action.payload);
+
+            if (action.payload) {
+
+                newState.posts = newState.posts.filter((e) => e.id !== action.payload)
+            }
+
+            return newState
+
 
 
         case "LOAD_POSTS":

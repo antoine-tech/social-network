@@ -45,6 +45,14 @@ const deleteUser = (userId) =>{
     }
 }
 
+const  deletePost = (postId) =>
+{
+    return {
+        type: "DELETE_POST",
+        payload: postId
+    }
+}
+
 
 export const addPost = (postDatas) =>
 {
@@ -61,6 +69,33 @@ export const addPost = (postDatas) =>
 // instantiating API wrapper
 const API_ENGINE = new ApiEngine();
 
+
+export const asncdDeletePost = (postId) =>
+{
+    return async (dispatch) =>
+    {
+
+        let jwt_token = Cookies.get("jwt");
+
+        let response = await API_ENGINE.delete(`/posts/${postId}`, true, jwt_token);
+
+
+        if (!response.hasOwnProperty("statusCode")) {
+            dispatch(
+                deletePost(postId)
+            );
+        } else {
+            dispatch(
+                setAlertMessage({
+                    type: "danger",
+                    messages: [
+                        { message: "Une erreure est survenue veuillez contacter le support technique" }
+                    ]
+                })
+            )
+        }
+    }
+}
 
 
 export const asndeleteUser = (userId) =>
