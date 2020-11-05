@@ -75,9 +75,8 @@ export const updatePost = (postDatas) => {
 const API_ENGINE = new ApiEngine();
 
 
-export const asncUpdateLike = (idPost, current_user) =>
-{
-    let  postDatas;
+export const asncUpdateLike = (idPost, current_user) => {
+    let postDatas;
     return async (dispatch) => {
 
         // let postDatas;
@@ -85,24 +84,23 @@ export const asncUpdateLike = (idPost, current_user) =>
         let postLike = await API_ENGINE.find(`/likes?post=${idPost}`, true, jwt_token);
 
 
-        let filteredPosts = postLike.filter((e)=>e.user?.id === current_user.id )
+        let filteredPosts = postLike.filter((e) => e.user?.id === current_user.id)
 
-        if (filteredPosts.length > 0 )
-        {
+        if (filteredPosts.length > 0) {
 
             let response = await API_ENGINE.delete(`/likes/${filteredPosts[0].id}`, true, jwt_token);
 
 
-        }else{
+        } else {
 
             let datas = {
-                post:idPost,
-                user:current_user.id
+                post: idPost,
+                user: current_user.id
             }
 
-      
-            let response = await API_ENGINE.create(datas,`/likes`, true, jwt_token);
-          
+
+            let response = await API_ENGINE.create(datas, `/likes`, true, jwt_token);
+
         }
 
 
@@ -112,9 +110,9 @@ export const asncUpdateLike = (idPost, current_user) =>
 
 
         response.likes = postLikes
-       
+
         dispatch(updatePost(response))
-       
+
 
     }
 }
@@ -315,10 +313,9 @@ export const asncRegisterUser = (userDatas) => {
         let response = await API_ENGINE.signUp(userDatas);
 
 
-
         if (response.hasOwnProperty("user")) {
 
-
+            // DISPLAYING ALERT
             dispatch(
                 setAlertMessage(
                     {
@@ -329,6 +326,19 @@ export const asncRegisterUser = (userDatas) => {
                     }
                 )
             );
+                
+
+            // SIGNING USER IN
+
+            // SETTING current_user cookie 
+            Cookies.set('current_user', JSON.stringify(response.user));
+
+            // SETTING jwt cookie
+            Cookies.set('jwt', response.jwt)
+            
+            dispatch(
+                setCurrentUser(response)
+            )
 
 
         } else {
