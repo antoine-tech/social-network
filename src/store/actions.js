@@ -38,15 +38,14 @@ const editUser = (userDatas) => {
     }
 }
 
-const deleteUser = (userId) =>{
+const deleteUser = (userId) => {
     return {
         type: "DELETE_CURRENT_USER",
         payload: userId
     }
 }
 
-const  deletePost = (postId) =>
-{
+const deletePost = (postId) => {
     return {
         type: "DELETE_POST",
         payload: postId
@@ -54,10 +53,16 @@ const  deletePost = (postId) =>
 }
 
 
-export const addPost = (postDatas) =>
-{
+export const addPost = (postDatas) => {
     return {
         type: "ADD_POST",
+        payload: postDatas
+    }
+}
+
+export const updatePost = (postDatas) => {
+    return {
+        type: "UPDATE_POST",
         payload: postDatas
     }
 }
@@ -70,10 +75,53 @@ export const addPost = (postDatas) =>
 const API_ENGINE = new ApiEngine();
 
 
-export const asncdDeletePost = (postId) =>
+export const asncUpdateLike = (idPost, current_user) =>
 {
-    return async (dispatch) =>
-    {
+    let  postDatas;
+    return async (dispatch) => {
+
+        // let postDatas;
+        let jwt_token = Cookies.get("jwt");
+        let postLike = await API_ENGINE.find(`/likes?post=${idPost}`, true, jwt_token);
+
+
+        let filteredPosts = postLike.filter((e)=>e.user?.id === current_user.id )
+
+        if (filteredPosts.length > 0 )
+        {
+
+            let response = await API_ENGINE.delete(`/likes/${filteredPosts[0].id}`, true, jwt_token);
+
+
+        }else{
+
+            let datas = {
+                post:idPost,
+                user:current_user.id
+            }
+
+      
+            let response = await API_ENGINE.create(datas,`/likes`, true, jwt_token);
+          
+        }
+
+
+        let response = await API_ENGINE.find(`/posts/${idPost}`, true, jwt_token);
+
+        let postLikes = await API_ENGINE.find(`/likes?post=${idPost}`, true, jwt_token);
+
+
+        response.likes = postLikes
+       
+        dispatch(updatePost(response))
+       
+
+    }
+}
+
+
+export const asncdDeletePost = (postId) => {
+    return async (dispatch) => {
 
         let jwt_token = Cookies.get("jwt");
 
@@ -98,8 +146,7 @@ export const asncdDeletePost = (postId) =>
 }
 
 
-export const asndeleteUser = (userId) =>
-{
+export const asndeleteUser = (userId) => {
     return async (dispatch) => {
         // CALL API EDIT DATAS
 
@@ -155,14 +202,32 @@ export const asncEditUser = (userDatas, userId) => {
 }
 
 
+
+
+
 export const asncLoadPosts = (currentPostNumber) => {
     return async (dispatch) => {
 
         let jwt_token = Cookies.get("jwt");
 
-        let response = await API_ENGINE.find(`/posts?_start=${currentPostNumber}&_limit=10`, true, jwt_token);
+        let response = await API_ENGINE.find(`/posts?_start=${currentPostNumber}&_limit=10&_sort=created_at:desc`, true, jwt_token);
+
+        let postLikes = response.map(async (e) => {
+
+            let postLike = await API_ENGINE.find(`/likes?post=${e.id}`, true, jwt_token);
+
+            e.likes = postLike;
+
+            return e
+
+        })
+
+
+        response = await Promise.all(postLikes);
+
 
         if (response.length > 0) {
+
             dispatch(
                 loadPosts(response)
             )
@@ -178,6 +243,21 @@ export const asncLoadMorePosts = (currentPostNumber) => {
         let jwt_token = Cookies.get("jwt");
 
         let response = await API_ENGINE.find(`/posts?_start=${currentPostNumber}&_limit=10`, true, jwt_token);
+
+
+        let postLikes = response.map(async (e) => {
+
+            let postLike = await API_ENGINE.find(`/likes?post=${e.id}&_sort=created_at:desc`, true, jwt_token);
+
+            e.likes = postLike;
+
+            return e
+
+        })
+
+
+        response = await Promise.all(postLikes);
+
 
         if (response.length > 0) {
             dispatch(

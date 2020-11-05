@@ -6,6 +6,9 @@ import { NavLink } from "react-router-dom";
 import * as currentUser from "../../helpers/currentUser";
 
 
+// IMAGE LOGO
+import mySocialNetworkLogo from "../../assets/img/my_social_network_logo.png";
+
 
 // ACCESSING CURRENT STATE OF REDUX STORE USING CONNECT HOC
 const mapStateToProps = (state) => {
@@ -40,7 +43,7 @@ const Navigation = ({ current_user }) => {
             <nav className="navbar bg-primary-color absolute-top navbar-dark">
 
 
-                <NavLink exact to="/" onClick={(event) => handleToogleMenu(event)} active className="active text-white font-weight-bold">My Social Network</NavLink>
+                <NavLink exact to="/" onClick={(event) => handleToogleMenu(event)} active className="active text-white font-weight-bold"><img src={mySocialNetworkLogo} alt="logo" className="nav-brand"/></NavLink>
 
 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-menu"

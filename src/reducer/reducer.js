@@ -128,7 +128,7 @@ const reducer = (state = initialState, action) => {
 
         case "LOAD_POSTS":
 
-            //console.log(action.payload);
+            console.log(action.payload);
 
             if (action.payload) {
                 newState.posts = action.payload;
@@ -144,6 +144,14 @@ const reducer = (state = initialState, action) => {
             }
 
             return newState;
+        case "UPDATE_POST":
+            // console.log(action.payload)
+            if (action.payload) {
+
+                newState.posts = [...newState.posts.filter((e)=>e.id!==action.payload.id), action.payload]
+            }
+
+            return newState
 
         case "CHANGE_MODAL_OPEN_STATE":
 

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 // method to access posts state in store
 const mapStateToProps = (state) => {
     return {
@@ -55,10 +56,10 @@ const Feed = ({ posts, loadPosts, loadMorePosts, toogleModal, modal_post_creatio
     }
 
 
+
     return (
 
         <div className="col-12 col-lg-6" id="feed-container">
-
 
 
             {
@@ -67,9 +68,9 @@ const Feed = ({ posts, loadPosts, loadMorePosts, toogleModal, modal_post_creatio
                     <div className="overflow-auto">
 
                         {
-                            posts.map((e) => {
-                                let { id, like, created_at, updated_at, user, text } = e;
-                                return <CardPost key={id} id={id} author={user} like={like} text={text} created_at={created_at} updated_at={updated_at} />
+                            posts.map( (e) => {
+                                let {likes, id, created_at, updated_at, user, text } = e;
+                                return <CardPost likes={likes} key={id} id={id} author={user} text={text} created_at={created_at} updated_at={updated_at} />
                             })
                         }
 
@@ -77,9 +78,6 @@ const Feed = ({ posts, loadPosts, loadMorePosts, toogleModal, modal_post_creatio
                 )
 
             }
-
-
-
 
 
 
