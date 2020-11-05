@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
         case "SET_CURRENT_USER":
 
             // DEBUG
-            console.log(action.payload)
+            //console.log(action.payload)
 
             if (action.payload) {
                 newState.messages = {

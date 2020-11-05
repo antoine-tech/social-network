@@ -45,7 +45,7 @@ const CardPost = ({likes, author, text, created_at, updated_at, current_user, id
 
                 <div className="col-6 col-lg-3">
 
-                    <h5><Link to={`/users/${author.id}`}>{author.username}</Link></h5>
+                    <h5><Link to={`/users/${author.username}`}>{author.username}</Link></h5>
 
                 </div>
 

@@ -24,12 +24,14 @@ const UserProfile = (props) => {
 
             const API_ENGINE = new ApiEngine();
 
-            let userDatasResponse = await API_ENGINE.find(`/users/${userId}`, true, jwt_token);
+            let userDatasResponse = await API_ENGINE.find(`/users?username=${userId}`, true, jwt_token);
 
-            let userPostsDatasResponse = await API_ENGINE.find(`/posts?user.id=${userId}`, true, jwt_token);
+            console.log(userDatasResponse);
+
+            let userPostsDatasResponse = await API_ENGINE.find(`/posts?user.id=${userDatasResponse[0].id}`, true, jwt_token);
 
 
-            setUserDatas(userDatasResponse);
+            setUserDatas(userDatasResponse[0]);
 
             setUserPostsDatas(userPostsDatasResponse);
 
