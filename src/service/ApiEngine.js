@@ -2,6 +2,7 @@ import API_BASE_URL from "../config/API/ApiBaseUrl";
 
 import Cookies from 'js-cookie'
 
+// API WRAPPER 
 class ApiEngine {
 
     constructor(base_url = API_BASE_URL, endpoint) {
@@ -21,13 +22,9 @@ class ApiEngine {
             headers: headers
         }
 
-
-        console.log(options);
-
         // dealing with options body if needed (POST, PUT)
 
         options = body ? { ...options, ...{ body: JSON.stringify(body) } } : options;
-
 
 
         // executing call to api
@@ -65,9 +62,7 @@ class ApiEngine {
         return response;
     }
 
-
     // userdatas as object {username, email, password}
-
     async signUp(datas, endpoint = "/auth/local/register") {
 
         let response = await this.create(datas, endpoint);
