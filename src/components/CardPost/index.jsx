@@ -11,19 +11,17 @@ import mySocialNetworkLogo from "../../assets/img/my_social_network_logo.png";
 import mapStateToProps from "../../store/mapperCurrentUser"
 
 
-const mapDispatchToProps = (dispatch) =>
-{
+const mapDispatchToProps = (dispatch) => {
     return {
-        deletePost:(id)=>dispatch(ActionDispatch.asncdDeletePost(id)),
-        updateLike:(idPost, current_user)=>dispatch(ActionDispatch.asncUpdateLike(idPost, current_user))
+        deletePost: (id) => dispatch(ActionDispatch.asncdDeletePost(id)),
+        updateLike: (idPost, current_user) => dispatch(ActionDispatch.asncUpdateLike(idPost, current_user))
     }
 }
 
-const CardPost = ({likes, author, text, created_at, updated_at, current_user, id, deletePost, updateLike }) => {
+const CardPost = ({ likes, author, text, created_at, updated_at, current_user, id, deletePost, updateLike }) => {
 
 
-    const handleLike = (id, current_user) =>
-    {
+    const handleLike = (id, current_user) => {
         updateLike(id, current_user)
     }
 
@@ -45,7 +43,7 @@ const CardPost = ({likes, author, text, created_at, updated_at, current_user, id
 
                 <div className="col-6 col-lg-3">
 
-                    <h5><Link to={`/users/${author.username}`}>{author.username}</Link></h5>
+                    <h5><Link to={`/users/${author?.username}`}>{author?.username}</Link></h5>
 
                 </div>
 
@@ -72,16 +70,21 @@ const CardPost = ({likes, author, text, created_at, updated_at, current_user, id
 
 
 
-            <div className="row col-12 d-flex justify-content-end like-and-share">
+            {
+                author &&
+                (
+                    <div className="row col-12 d-flex justify-content-end like-and-share">
 
-                <i class={`${likes?.length > 0 && "text-danger"} far fa-heart fa-lg mr-4 row `} onClick={()=>handleLike(id, current_user)}><p className="ml-2">{likes?.length}</p></i>
-                <i className="fas fa-search-plus fa-lg mr-4"></i>
+                        <i class={`${likes?.length > 0 && "text-danger"} far fa-heart fa-lg mr-4 row `} onClick={() => handleLike(id, current_user)}><p className="ml-2">{likes?.length}</p></i>
+                        <i className="fas fa-search-plus fa-lg mr-4"></i>
 
-                {
-                    current_user.id === author.id && <i className="far fa-trash-alt fa-lg" onClick={()=>deletePost(id)}></i>
-                }
+                        {
+                            current_user.id === author.id && <i className="far fa-trash-alt fa-lg" onClick={() => deletePost(id)}></i>
+                        }
 
-            </div>
+                    </div>
+                )
+            }
 
 
         </div>

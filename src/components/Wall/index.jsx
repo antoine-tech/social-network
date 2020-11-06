@@ -45,7 +45,7 @@ const Wall = ({ toogleModal, modal_post_creation_open_state}) => {
 
                 </div>
 
-                <Feed />
+                <Feed classesStyles={["col-12", "col-lg-6"]}  />
 
 
                 <div className="d-none d-lg-block col-lg-3">

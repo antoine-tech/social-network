@@ -354,3 +354,16 @@ i {
         justify-content: center;
     }
 }
+
+#home-title-container{
+    background-image: url(../img/home_illustration.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.overlay-light{
+    background-color: rgba(241, 233, 227, 0.33);
+    height: 100%;
+    width:100%;
+}

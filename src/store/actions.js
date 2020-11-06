@@ -203,27 +203,30 @@ export const asncEditUser = (userDatas, userId) => {
 
 
 
-export const asncLoadPosts = (currentPostNumber) => {
+export const asncLoadPosts = (currentPostNumber, current_user) => {
     return async (dispatch) => {
 
         let jwt_token = Cookies.get("jwt");
 
         let response = await API_ENGINE.find(`/posts?_start=${currentPostNumber}&_limit=10&_sort=created_at:desc`, true, jwt_token);
 
-        let postLikes = response.map(async (e) => {
+        if (Object.keys(current_user).length > 0) {
 
-            let postLike = await API_ENGINE.find(`/likes?post=${e.id}`, true, jwt_token);
+            let postLikes = response.map(async (e) => {
 
-            e.likes = postLike;
+                let postLike = await API_ENGINE.find(`/likes?post=${e.id}`, true, jwt_token);
 
-            return e
+                e.likes = postLike;
 
-        })
+                return e
+
+            })
 
 
-        response = await Promise.all(postLikes);
+            response = await Promise.all(postLikes);
 
 
+        }
         if (response.length > 0) {
 
             dispatch(
@@ -326,7 +329,7 @@ export const asncRegisterUser = (userDatas) => {
                     }
                 )
             );
-                
+
 
             // SIGNING USER IN
 
@@ -335,7 +338,7 @@ export const asncRegisterUser = (userDatas) => {
 
             // SETTING jwt cookie
             Cookies.set('jwt', response.jwt)
-            
+
             dispatch(
                 setCurrentUser(response)
             )
