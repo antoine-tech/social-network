@@ -33,7 +33,7 @@ const Home = () => {
                     </div>
 
 
-                    <div className="d-none d-md-flex col-md-6 p-0 justify-content-center align-items-center">
+                    <div className="d-none d-lg-flex col-lg-6 p-0 justify-content-center align-items-center">
 
 
                         <Feed classesStyles={["col-9", "d-flex", "align-items-center"]} />
