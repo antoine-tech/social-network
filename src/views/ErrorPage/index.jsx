@@ -1,6 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom"
-import error from "../../../assets/img/error_404.png";
+import error from "../../assets/img/error_404.png";
 
 const ErrorPage = (props) => {
     return (

@@ -5,29 +5,29 @@ import { connect } from "react-redux";
 // COMPONENTS
 
 // NAVBAR
-import Navigation from "../Navigation"
+import Navigation from "../components/Navigation"
 
 // HOC FOR PRIVATE ROUTING
-import PrivateRoute from "../PrivateRoute";
+import PrivateRoute from "../components/PrivateRoute";
 
 // VIEWS
 import Home from "../views/Home";
-import Wall from "../Wall";
+import Wall from "../components/Wall";
 import SignActions from "../views/SignActions";
-import SignInForm from "../SignInForm/"
-import SignUpForm from "../SignUpForm/"
-import UserProfile from "../UserProfile";
-import EditForm from "../EditForm";
+import SignInForm from "../components/SignInForm"
+import SignUpForm from "../components/SignUpForm"
+import UserProfile from "../components/UserProfile";
+import EditForm from "../components/EditForm";
 
 // HELPERS
-import { isUserLoggedIn } from "../../helpers/currentUser";
+import { isUserLoggedIn } from "../helpers/currentUser";
 
 // IMAGES
-import signInIllustration from "../../assets/img/sign_in_illustration.jpg";
-import signUpIllustration from "../../assets/img/sign_up_illustration.jpg";
-import editIllustration from "../../assets/img/edit_illustration.jpg";
+import signInIllustration from "../assets/img/sign_in_illustration.jpg";
+import signUpIllustration from "../assets/img/sign_up_illustration.jpg";
+import editIllustration from "../assets/img/edit_illustration.jpg";
 
-import mapStateToProps from "../../store/mapperCurrentUser"
+import mapStateToProps from "../store/mapperCurrentUser"
 import ErrorPage from "../views/ErrorPage";
 
 

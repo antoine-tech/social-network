@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import Feed from "../../Feed";
+import Feed from "../../components/Feed";
 
 const Home = () => {
     return (
