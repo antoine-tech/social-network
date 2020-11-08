@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -44,7 +44,7 @@ const Navigation = ({ current_user }) => {
             <nav className="navbar bg-primary-color absolute-top navbar-dark">
 
 
-                <NavLink exact to="/" onClick={(event) => handleToogleMenu(event)} active className="active text-white font-weight-bold"><img src={mySocialNetworkLogo} alt="logo" className="nav-brand"/></NavLink>
+                <NavLink exact to="/" onClick={(event) => handleToogleMenu(event)} className="active text-white font-weight-bold"><img src={mySocialNetworkLogo} alt="logo" className="nav-brand"/></NavLink>
 
 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-menu"
@@ -65,7 +65,7 @@ const Navigation = ({ current_user }) => {
                     <div>
 
                         <li>
-                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/" active className="active"><i class="fas fa-home mr-4"></i>Accueil</NavLink>
+                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/" className="active"><i className="fas fa-home mr-4"></i>Accueil</NavLink>
                         </li>
 
                         {   // CHECKING WETHER USER IS LOGGED IN TO DISPLAY LINK ACCORDINGLY
@@ -76,13 +76,13 @@ const Navigation = ({ current_user }) => {
 
                                     <>
                                         <li>
-                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/wall" active ><i class="fas fa-comment-alt mr-4"></i>Mon mur</NavLink>
+                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/wall" ><i className="fas fa-comment-alt mr-4"></i>Mon mur</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/profile" active><i class="fas fa-user mr-4"></i>Mon compte</NavLink>
+                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/profile"><i className="fas fa-user mr-4"></i>Mon compte</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink onClick={(event) => handleSignOut(event)} exact to="/sign-out" active ><i class="fas fa-power-off mr-4"></i>Deconnexion</NavLink>
+                                            <NavLink onClick={(event) => handleSignOut(event)} exact to="/sign-out" ><i className="fas fa-power-off mr-4"></i>Deconnexion</NavLink>
                                         </li>
 
 
@@ -97,12 +97,12 @@ const Navigation = ({ current_user }) => {
                                     <>
 
                                         <li>
-                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/register" active ><i class="fas fa-pen mr-4"></i>Inscription</NavLink>
+                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/register" ><i className="fas fa-pen mr-4"></i>Inscription</NavLink>
 
                                         </li>
 
                                         <li>
-                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/login" active ><i class="far fa-hand-spock mr-4"></i>Connexion</NavLink>
+                                            <NavLink onClick={(event) => handleToogleMenu(event)} exact to="/login" ><i className="far fa-hand-spock mr-4"></i>Connexion</NavLink>
                                         </li>
 
                                     </>

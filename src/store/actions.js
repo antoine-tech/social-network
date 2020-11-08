@@ -76,7 +76,6 @@ const API_ENGINE = new ApiEngine();
 
 
 export const asncUpdateLike = (idPost, current_user) => {
-    let postDatas;
     return async (dispatch) => {
 
         // let postDatas;
@@ -88,7 +87,7 @@ export const asncUpdateLike = (idPost, current_user) => {
 
         if (filteredPosts.length > 0) {
 
-            let response = await API_ENGINE.delete(`/likes/${filteredPosts[0].id}`, true, jwt_token);
+             await API_ENGINE.delete(`/likes/${filteredPosts[0].id}`, true, jwt_token);
 
 
         } else {
@@ -99,7 +98,7 @@ export const asncUpdateLike = (idPost, current_user) => {
             }
 
 
-            let response = await API_ENGINE.create(datas, `/likes`, true, jwt_token);
+           await API_ENGINE.create(datas, `/likes`, true, jwt_token);
 
         }
 

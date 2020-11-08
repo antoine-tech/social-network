@@ -35,7 +35,7 @@ const Alert = ({ messages, removeAlert }) => {
 
             <div className={`alert alert-${messages.type} alert-dismissible fade show my-4`} role="alert">
                 {
-                    messages.messages.map((e) => <p className="text-center">{e.message}</p>)
+                    messages.messages.map((e, index) => <p className="text-center" key={index}>{e.message}</p>)
                 }
                 <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={() => removeAlert()}>
                     <span aria-hidden="true">&times;</span>

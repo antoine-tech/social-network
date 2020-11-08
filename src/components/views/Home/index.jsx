@@ -1,5 +1,4 @@
 import React from "react"
-import imageHome from "../../../assets/img/home_illustration.png";
 import { Link } from "react-router-dom"
 import Feed from "../../Feed";
 

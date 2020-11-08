@@ -15,25 +15,25 @@ const UserProfile = (props) => {
 
     const [userPostsDatas, setUserPostsDatas] = useState([]);
 
+    const fetchDatas = async () => {
+
+        let jwt_token = Cookies.get("jwt");
+
+        const API_ENGINE = new ApiEngine();
+
+        let userDatasResponse = await API_ENGINE.find(`/users?username=${userId}`, true, jwt_token);
+
+        let userPostsDatasResponse = await API_ENGINE.find(`/posts?user.id=${userDatasResponse[0].id}`, true, jwt_token);
+
+
+        setUserDatas(userDatasResponse[0]);
+
+        setUserPostsDatas(userPostsDatasResponse);
+
+    }
+
 
     useEffect(() => {
-
-        const fetchDatas = async () => {
-
-            let jwt_token = Cookies.get("jwt");
-
-            const API_ENGINE = new ApiEngine();
-
-            let userDatasResponse = await API_ENGINE.find(`/users?username=${userId}`, true, jwt_token);
-
-            let userPostsDatasResponse = await API_ENGINE.find(`/posts?user.id=${userDatasResponse[0].id}`, true, jwt_token);
-
-
-            setUserDatas(userDatasResponse[0]);
-
-            setUserPostsDatas(userPostsDatasResponse);
-
-        }
 
         fetchDatas()
 
