@@ -75,7 +75,7 @@ const CardPost = ({ likes, author, text, created_at, updated_at, current_user, i
                 (
                     <div className="row col-12 d-flex justify-content-end like-and-share">
 
-                        <i class={`${likes?.length > 0 && "text-danger"} far fa-heart fa-lg mr-4 row `} onClick={() => handleLike(id, current_user)}><p className="ml-2">{likes?.length}</p></i>
+                        <i className={`${likes?.length > 0 && "text-danger"} far fa-heart fa-lg mr-4 row `} onClick={() => handleLike(id, current_user)}><p className="ml-2">{likes?.length}</p></i>
                         <i className="fas fa-search-plus fa-lg mr-4"></i>
 
                         {
