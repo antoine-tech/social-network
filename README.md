@@ -16,8 +16,10 @@ A little social app to practice redux stror, middleware, auth and routing using 
 ## Description
 
 
-Api was designed using Strapi CMS with three collections Users, Posts and Likes
-Api is available  at the following adress <https://github.com/antoine-tech/social-network-api>
+API was designed using Strapi CMS with three collections Users, Posts and Likes:
+
+API repository is available  at the following adress <https://github.com/antoine-tech/social-network-api>
+Live API at the follwing one <https://api-social-network-next.herokuapp.com/>
 
 Features implemented are the following one: 
 
