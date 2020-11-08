@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
+import * as actionDispatch from "../store/actions";
 
 // COMPONENTS
 
@@ -32,6 +33,7 @@ import ErrorPage from "../views/ErrorPage";
 
 
 const App = ({ current_user }) => {
+
 
     return (
 
@@ -71,7 +73,7 @@ const App = ({ current_user }) => {
                 <Route path={"/profile"}>
 
                     {
-                        isUserLoggedIn(current_user) ? <SignActions component={EditForm} imageSrc={editIllustration} />  : <Redirect to={"/login"} />
+                        isUserLoggedIn(current_user) ? <SignActions component={EditForm} imageSrc={editIllustration} /> : <Redirect to={"/login"} />
 
                     }
 
@@ -87,11 +89,11 @@ const App = ({ current_user }) => {
                 <Route path="/error">
 
 
-                    <ErrorPage/>
+                    <ErrorPage />
 
 
                 </Route>
-                
+
 
                 <Redirect to="/error"></Redirect>
 

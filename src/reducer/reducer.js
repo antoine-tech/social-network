@@ -1,7 +1,12 @@
+import Cookies from "js-cookie";
+import { isUserLoggedIn } from "../helpers/currentUser";
+
+const current_user = isUserLoggedIn() ? JSON.parse(Cookies.get("current_user")) : {}
+
 const initialState = {
 
     posts: [],
-    current_user: {},
+    current_user: current_user,
     jwt: "",
     loading: false,
     modal_post_creation_open_state: false,
@@ -42,7 +47,7 @@ const reducer = (state = initialState, action) => {
 
             return newState;
 
-        
+
         // EDIT THE CURRENT USER
         case "EDIT_CURRENT_USER":
 
@@ -96,7 +101,7 @@ const reducer = (state = initialState, action) => {
             }
 
             return newState;
-        
+
         // SET ALERTS MESSAGES
         case "SET_ALERT_MESSAGE":
 
@@ -110,7 +115,7 @@ const reducer = (state = initialState, action) => {
             }
 
             return newState
-        
+
         // ADD A POST TO POSTS ARRAY
         case "ADD_POST":
 
@@ -139,7 +144,7 @@ const reducer = (state = initialState, action) => {
 
         // LOAD POSTS AT FIRST INITIALIZATION
         case "LOAD_POSTS":
-            
+
             // DEBUG
             //console.log(newState)
 
@@ -148,10 +153,10 @@ const reducer = (state = initialState, action) => {
             }
 
             return newState
-        
+
         // LOAD MORE POSTS WHEN USER CLICK ON BUTTON LOAD MORE ON /wall PAGE
         case "LOAD_MORE_POSTS":
-            
+
             // DEBUG
             //console.log(newState)
 
@@ -163,17 +168,17 @@ const reducer = (state = initialState, action) => {
 
         // UPDATE A POST IN THE ARRAY OF POSTS AND RETURN POSTS WITH MODIFIED ONE
         case "UPDATE_POST":
-           
+
             // DEBUG
             //console.log(newState)
 
             if (action.payload) {
 
-                newState.posts = [...newState.posts.filter((e)=>e.id!==action.payload.id), action.payload]
+                newState.posts = [...newState.posts.filter((e) => e.id !== action.payload.id), action.payload]
             }
 
             return newState
-        
+
         // CHANGE OPEN STATE OF MODAL 
         case "CHANGE_MODAL_OPEN_STATE":
 

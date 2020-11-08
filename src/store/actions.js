@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 
 
 // function sending (COMMAND) action wich will be interpreted by reducer function to update redux strore aka global state of APP
-const setCurrentUser = (userDatas) => {
+export const setCurrentUser = (userDatas) => {
     return { type: "SET_CURRENT_USER", payload: userDatas }
 }
 
