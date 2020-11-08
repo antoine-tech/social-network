@@ -20,6 +20,8 @@ API was designed using Strapi CMS with three collections Users, Posts and Likes:
 
 API repository is available  at the following adress:
 - <https://github.com/antoine-tech/social-network-api>
+
+
 Live API at the follwing one:
 - <https://api-social-network-next.herokuapp.com/>
 
